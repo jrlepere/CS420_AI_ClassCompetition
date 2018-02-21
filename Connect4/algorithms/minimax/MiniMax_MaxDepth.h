@@ -1,0 +1,26 @@
+/*
+ * MiniMax_MaxDepth.h
+ *
+ *  Created on: Feb 20, 2018
+ *      Author: JLepere2
+ */
+
+#ifndef MINIMAX_MAXDEPTH_H_
+#define MINIMAX_MAXDEPTH_H_
+
+#include "MiniMax.h"
+
+class MiniMax_MaxDepth: public MiniMax
+{
+public:
+	MiniMax_MaxDepth(int maxTime, int maxDepth, SuccessorFunction& successorFunction, HeuristicFunction& heuristicFunction):
+		MiniMax(maxTime, successorFunction, heuristicFunction), maxDepth(maxDepth) {}
+	~MiniMax_MaxDepth(){}
+	vector<int> getMove(vector<vector<int> >& board, int previousRow, int previousCol);
+private:
+	vector<int> minValue(vector<vector<int> >& board, int previousRow, int previousCol, int alpha, int beta, int depth);
+	vector<int> maxValue(vector<vector<int> >& board, int previousRow, int previousCol, int alpha, int beta, int depth);
+	int maxDepth;
+};
+
+#endif /* MINIMAX_MAXDEPTH_H_ */
