@@ -18,8 +18,7 @@ public:
 	~MiniMax_DFS(){}
 	vector<int> getMove(vector<vector<int> >& board, int previousRow, int previousCol);
 private:
-	vector<int> minValue(vector<vector<int> >& board, int previousRow, int previousCol, int alpha, int beta, int depth);
-	vector<int> maxValue(vector<vector<int> >& board, int previousRow, int previousCol, int alpha, int beta, int depth);
+	vector<int> hMiniMax(vector<vector<int> >& board, int depth, int previousRow, int previousCol);
 };
 
 #endif /* MINIMAX_DFS_H_ */

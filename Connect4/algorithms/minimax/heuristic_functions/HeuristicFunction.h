@@ -19,7 +19,6 @@ public:
 	HeuristicFunction(){}
 	virtual ~HeuristicFunction(){}
 	virtual int execute(vector<vector<int> >& board)=0;
-	static int terminalBoard(vector<vector< int> > board);
 };
 
 

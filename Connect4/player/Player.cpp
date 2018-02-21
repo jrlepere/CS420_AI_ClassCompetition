@@ -7,8 +7,8 @@
 
 #include "Player.h"
 
-vector<int> Player::play() {
-	vector<int> move = algo.getMove(board, 0, 0);
+vector<int> Player::play(int previousRow, int previousCol) {
+	vector<int> move = algo.getMove(board, previousRow, previousCol);
 	int row = move[0];
 	int col = move[1];
 	board[row][col] = 1;

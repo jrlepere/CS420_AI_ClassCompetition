@@ -22,13 +22,9 @@
 using namespace std;
 
 /*
- * TODO: Efficient way of finding best move to place. (Spiral??)
- * TODO: Utility function values
- * TODO: Time constraint
  * TODO: AB pruning
  * TODO: Documentation.
  * TODO: Integer MIN/MAX
- * TODO: Initial Move previous...
  * TODO: Kill states
  */
 
@@ -37,16 +33,16 @@ using namespace std;
  */
 int main() {
 
-	int maxTime = 20;
+	int maxTime = 28;
 
 	WinnerOrLoser h1;
-	RowByRow sf1;
-	MiniMax_MaxDepth a1(maxTime, 6, sf1, h1);
+	Spiral sf1;
+	MiniMax_MaxDepth a1(maxTime, 4, sf1, h1);
 	Player p1(a1);
 
 	WinnerOrLoser h2;
 	Spiral sf2;
-	MiniMax_MaxDepth a2(maxTime, 5, sf2, h2);
+	MiniMax_MaxDepth a2(maxTime, 4, sf2, h2);
 	Player p2(a2);
 
 	Game g(p1, p2);

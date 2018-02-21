@@ -23,7 +23,7 @@ public:
 		board = createInitialBoard();
 	}
 	~Player(){}
-	vector<int> play();
+	vector<int> play(int previousRow, int previousCol);
 	void opponentPlay(int row, int col);
 	vector<vector<int> >& getBoard();
 private:

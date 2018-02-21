@@ -4,15 +4,12 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../algorithms/minimax/heuristic_functions/HeuristicFunction.cpp \
 ../algorithms/minimax/heuristic_functions/WinnerOrLoser.cpp 
 
 OBJS += \
-./algorithms/minimax/heuristic_functions/HeuristicFunction.o \
 ./algorithms/minimax/heuristic_functions/WinnerOrLoser.o 
 
 CPP_DEPS += \
-./algorithms/minimax/heuristic_functions/HeuristicFunction.d \
 ./algorithms/minimax/heuristic_functions/WinnerOrLoser.d 
 
 
