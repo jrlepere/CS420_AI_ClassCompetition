@@ -11,7 +11,7 @@ vector<int> MiniMax_MaxDepth::getMove(vector<vector<int> >& board, int previousR
 	startTime = time(0);
 	int alpha = NEG_INF;
 	int beta = INF;
-	int depth = 1;
+	int depth = 0;
 	vector<int> move = hMiniMax(board, depth, alpha, beta, previousRow, previousCol);
 	return {move[1], move[2]};
 }

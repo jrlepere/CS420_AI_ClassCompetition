@@ -24,6 +24,7 @@ class UtilityFunctions
 {
 public:
 	static void printBoard(vector<vector<int> > board);
+	static int terminalBoard(vector<vector<int> > board, int depth);
 };
 
 #endif /* UTILITIES_H_ */

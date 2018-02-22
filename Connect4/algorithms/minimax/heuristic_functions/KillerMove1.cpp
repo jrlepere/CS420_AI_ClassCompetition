@@ -28,8 +28,8 @@ int KillerMove1::execute(vector<vector<int> >& board, int depth) {
 				(board[row][i+1] == board[row][i+2]) &&
 				(board[row][i+2] == board[row][i+3])
 			) {
-				if (board[row][i] != player) opponentFound = true;
-				else return board[row][i] * value;
+				if (board[row][i+1] != player) opponentFound = true;
+				else return board[row][i+1] * value;
 			}
 		}
 	}
@@ -43,8 +43,8 @@ int KillerMove1::execute(vector<vector<int> >& board, int depth) {
 				(board[i+1][col] == board[i+2][col]) &&
 				(board[i+2][col] == board[i+3][col])
 			) {
-				if (board[i][col] != player) opponentFound = true;
-				return board[i][col] * value;
+				if (board[i+1][col] != player) opponentFound = true;
+				return board[i+1][col] * value;
 			}
 		}
 	}

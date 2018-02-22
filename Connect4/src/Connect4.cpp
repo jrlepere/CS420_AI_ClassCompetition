@@ -18,6 +18,7 @@
 #include "../algorithms/minimax/heuristic_functions/Doubles.h"
 #include "../algorithms/minimax/heuristic_functions/DoublesAndTriples.h"
 #include "../algorithms/minimax/heuristic_functions/OneAway.h"
+#include "../algorithms/minimax/heuristic_functions/JakesHeuristic.h"
 #include "../algorithms/minimax/successor_functions/Spiral.h"
 #include "../algorithms/minimax/successor_functions/RowByRow.h"
 #include "../player/Player.h"
@@ -47,12 +48,9 @@ int main() {
 	MiniMax_IDS a1(maxTime, sf1, d1);
 	Player p1(a1);
 
-	WinnerOrLoser h2;
-	KillerMove1 k2(h2);
-	OneAway o2(k2);
-	DoublesAndTriples d2(o2);
+	JakesHeuristic h2;
 	Spiral sf2;
-	MiniMax_MaxDepth a2(maxTime, 4, sf2, d2);
+	MiniMax_IDS a2(maxTime, sf2, h2);
 	Player p2(a2);
 
 	Game g(p1, p2);

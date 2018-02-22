@@ -21,6 +21,4 @@ public:
 	virtual int execute(vector<vector<int> >& board, int depth)=0;
 };
 
-
-
 #endif /* HEURISTICFUNCTION_H_ */
