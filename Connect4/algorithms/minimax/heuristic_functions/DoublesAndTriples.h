@@ -16,7 +16,7 @@ public:
 	DoublesAndTriples(HeuristicFunction& parentHeuristic):
 		HeuristicFunctionDecorator(parentHeuristic){}
 	~DoublesAndTriples(){}
-	int execute(vector<vector<int> >& board);
+	int execute(vector<vector<int> >& board, int depth);
 };
 
 #endif /* DOUBLESANDTRIPLES_H_ */

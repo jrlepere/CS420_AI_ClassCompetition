@@ -7,9 +7,17 @@
 
 #include "KillerMove1.h"
 
-int KillerMove1::execute(vector<vector<int> >& board) {
-	int pRes = parentHeuristic.execute(board);
+int KillerMove1::execute(vector<vector<int> >& board, int depth) {
+	int pRes = parentHeuristic.execute(board, depth);
 	if (pRes != 0) return pRes;
+
+	int value = 99;
+
+	int player;
+	if (depth % 2 == 0) player = MAX;
+	else player = MIN;
+
+	bool opponentFound = false;
 
 	// ROW TEST
 	for (int row = 0; row < BOARD_SIZE; row ++) {
@@ -19,7 +27,10 @@ int KillerMove1::execute(vector<vector<int> >& board) {
 				(board[row][i+1] != 0) &&
 				(board[row][i+1] == board[row][i+2]) &&
 				(board[row][i+2] == board[row][i+3])
-				) return board[row][i] * 100;
+			) {
+				if (board[row][i] != player) opponentFound = true;
+				else return board[row][i] * value;
+			}
 		}
 	}
 
@@ -31,9 +42,14 @@ int KillerMove1::execute(vector<vector<int> >& board) {
 				(board[i+1][col] != 0) &&
 				(board[i+1][col] == board[i+2][col]) &&
 				(board[i+2][col] == board[i+3][col])
-				) return board[i][col] * 100;
+			) {
+				if (board[i][col] != player) opponentFound = true;
+				return board[i][col] * value;
+			}
 		}
 	}
+
+	if (opponentFound) return (player * -1) * value;
 
 	return 0;
 }

@@ -9,12 +9,12 @@
 
 vector<int> MiniMax_MaxDepth::getMove(vector<vector<int> >& board, int previousRow, int previousCol) {
 	startTime = time(0);
-	vector<int> move = hMiniMax(board, 0, previousRow, previousCol);
+	vector<int> move = hMiniMax(board, 1, previousRow, previousCol);
 	return {move[1], move[2]};
 }
 
 vector<int> MiniMax_MaxDepth::hMiniMax(vector<vector<int> >& board, int depth, int previousRow, int previousCol) {
-	if (cutoffTest(board, depth, maxDepth)) return {heuristicFunction.execute(board), previousRow, previousCol};
+	if (cutoffTest(board, depth, maxDepth)) return {heuristicFunction.execute(board, depth), previousRow, previousCol};
 	vector<vector<int> > successors = successorFunction.execute(board, previousRow, previousCol);
 	if (depth % 2 == 0) {
 		vector<int> v = {NEG_INF};

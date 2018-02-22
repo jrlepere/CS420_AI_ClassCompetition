@@ -16,7 +16,7 @@ vector<int> MiniMax_DFS::getMove(vector<vector<int> >& board, int previousRow, i
 vector<int> MiniMax_DFS::hMiniMax(vector<vector<int> >& board, int depth, int previousRow, int previousCol) {
 	//int t = HeuristicFunction::terminalBoard(board);
 	//if (abs(t) == MAX) return {t, previousRow, previousCol};
-	if (cutoffTest(board, depth, INF)) return {heuristicFunction.execute(board), previousRow, previousCol};
+	if (cutoffTest(board, depth, INF)) return {heuristicFunction.execute(board, depth), previousRow, previousCol};
 	vector<vector<int> > successors = successorFunction.execute(board, previousRow, previousCol);
 	if (depth % 2 == 0) {
 		vector<int> v = {NEG_INF};

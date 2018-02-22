@@ -8,6 +8,8 @@ CPP_SRCS += \
 ../algorithms/minimax/heuristic_functions/Doubles.cpp \
 ../algorithms/minimax/heuristic_functions/DoublesAndTriples.cpp \
 ../algorithms/minimax/heuristic_functions/KillerMove1.cpp \
+../algorithms/minimax/heuristic_functions/OneAway.cpp \
+../algorithms/minimax/heuristic_functions/TwoAway.cpp \
 ../algorithms/minimax/heuristic_functions/WinnerOrLoser.cpp 
 
 OBJS += \
@@ -15,6 +17,8 @@ OBJS += \
 ./algorithms/minimax/heuristic_functions/Doubles.o \
 ./algorithms/minimax/heuristic_functions/DoublesAndTriples.o \
 ./algorithms/minimax/heuristic_functions/KillerMove1.o \
+./algorithms/minimax/heuristic_functions/OneAway.o \
+./algorithms/minimax/heuristic_functions/TwoAway.o \
 ./algorithms/minimax/heuristic_functions/WinnerOrLoser.o 
 
 CPP_DEPS += \
@@ -22,6 +26,8 @@ CPP_DEPS += \
 ./algorithms/minimax/heuristic_functions/Doubles.d \
 ./algorithms/minimax/heuristic_functions/DoublesAndTriples.d \
 ./algorithms/minimax/heuristic_functions/KillerMove1.d \
+./algorithms/minimax/heuristic_functions/OneAway.d \
+./algorithms/minimax/heuristic_functions/TwoAway.d \
 ./algorithms/minimax/heuristic_functions/WinnerOrLoser.d 
 
 

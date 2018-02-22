@@ -7,7 +7,7 @@
 
 #include "AlwaysZero.h"
 
-int AlwaysZero::execute(vector<vector<int> >& board) {
+int AlwaysZero::execute(vector<vector<int> >& board, int depth) {
 	return 0;
 }
 

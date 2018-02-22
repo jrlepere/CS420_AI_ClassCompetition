@@ -1,22 +1,23 @@
 /*
- * Doubles.h
+ * TwoAway.h
  *
  *  Created on: Feb 21, 2018
  *      Author: JLepere2
  */
 
-#ifndef DOUBLES_H_
-#define DOUBLES_H_
+#ifndef TWOAWAY_H_
+#define TWOAWAY_H_
+
 
 #include "HeuristicFunctionDecorator.h"
 
-class Doubles: public HeuristicFunctionDecorator
+class TwoAway: public HeuristicFunctionDecorator
 {
 public:
-	Doubles(HeuristicFunction& parentHeuristic):
+	TwoAway(HeuristicFunction& parentHeuristic):
 		HeuristicFunctionDecorator(parentHeuristic){}
-	~Doubles(){}
+	~TwoAway(){}
 	int execute(vector<vector<int> >& board, int depth);
 };
 
-#endif /* DOUBLES_H_ */
+#endif /* TWOAWAY_H_ */

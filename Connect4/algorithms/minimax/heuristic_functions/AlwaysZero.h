@@ -15,7 +15,7 @@ class AlwaysZero: public HeuristicFunction
 public:
 	AlwaysZero(){}
 	~AlwaysZero(){}
-	int execute(vector<vector<int> >& board);
+	int execute(vector<vector<int> >& board, int depth);
 };
 
 #endif /* ALWAYSZERO_H_ */

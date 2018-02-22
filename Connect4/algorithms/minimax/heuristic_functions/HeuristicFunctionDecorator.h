@@ -16,7 +16,7 @@ public:
 	HeuristicFunctionDecorator(HeuristicFunction& parentHeuristic):
 		parentHeuristic(parentHeuristic){}
 	~HeuristicFunctionDecorator(){}
-	virtual int execute(vector<vector<int> >& board) =0;
+	virtual int execute(vector<vector<int> >& board, int depth) =0;
 protected:
 	HeuristicFunction& parentHeuristic;
 };

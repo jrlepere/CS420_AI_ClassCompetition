@@ -16,7 +16,7 @@ public:
 	KillerMove1(HeuristicFunction& parentHeuristic):
 		HeuristicFunctionDecorator(parentHeuristic){}
 	~KillerMove1(){}
-	int execute(vector<vector<int> >& board);
+	int execute(vector<vector<int> >& board, int depth);
 };
 
 #endif /* KILLERMOVE1_H_ */

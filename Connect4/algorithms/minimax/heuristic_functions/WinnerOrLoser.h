@@ -15,7 +15,7 @@ class WinnerOrLoser: public HeuristicFunction
 public:
 	WinnerOrLoser(){}
 	~WinnerOrLoser(){}
-	int execute(vector<vector<int> >& board);
+	int execute(vector<vector<int> >& board, int depth);
 };
 
 #endif /* WINNERORLOSER_H_ */

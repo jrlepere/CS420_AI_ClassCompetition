@@ -7,8 +7,8 @@
 
 #include "DoublesAndTriples.h"
 
-int DoublesAndTriples::execute(vector<vector<int> >& board) {
-	int pRes = parentHeuristic.execute(board);
+int DoublesAndTriples::execute(vector<vector<int> >& board, int depth) {
+	int pRes = parentHeuristic.execute(board, depth);
 	if (pRes != 0) return pRes;
 
 	int doubleCount = 0;

@@ -1,22 +1,22 @@
 /*
- * Doubles.h
+ * OneAway.h
  *
  *  Created on: Feb 21, 2018
  *      Author: JLepere2
  */
 
-#ifndef DOUBLES_H_
-#define DOUBLES_H_
+#ifndef ONEAWAY_H_
+#define ONEAWAY_H_
 
 #include "HeuristicFunctionDecorator.h"
 
-class Doubles: public HeuristicFunctionDecorator
+class OneAway: public HeuristicFunctionDecorator
 {
 public:
-	Doubles(HeuristicFunction& parentHeuristic):
+	OneAway(HeuristicFunction& parentHeuristic):
 		HeuristicFunctionDecorator(parentHeuristic){}
-	~Doubles(){}
+	~OneAway(){}
 	int execute(vector<vector<int> >& board, int depth);
 };
 
-#endif /* DOUBLES_H_ */
+#endif /* ONEAWAY_H_ */

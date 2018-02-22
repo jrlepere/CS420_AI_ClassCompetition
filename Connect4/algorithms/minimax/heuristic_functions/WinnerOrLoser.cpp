@@ -7,7 +7,9 @@
 
 #include "WinnerOrLoser.h"
 
-int WinnerOrLoser::execute(vector<vector<int> >& board) {
+int WinnerOrLoser::execute(vector<vector<int> >& board, int depth) {
+
+	int value = 100;
 
 	// ROW TEST
 	for (int row = 0; row < BOARD_SIZE; row ++) {
@@ -16,7 +18,7 @@ int WinnerOrLoser::execute(vector<vector<int> >& board) {
 				(board[row][i] == board[row][i+1]) &&
 				(board[row][i+1] == board[row][i+2]) &&
 				(board[row][i+2] == board[row][i+3])
-				) return board[row][i] * 100;
+			) return board[row][i] * value;
 		}
 	}
 
@@ -27,7 +29,7 @@ int WinnerOrLoser::execute(vector<vector<int> >& board) {
 				(board[i][col] == board[i+1][col]) &&
 				(board[i+1][col] == board[i+2][col]) &&
 				(board[i+2][col] == board[i+3][col])
-				) return board[i][col] * 100;
+				) return board[i][col] * value;
 		}
 	}
 
