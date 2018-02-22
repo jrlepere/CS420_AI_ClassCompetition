@@ -10,8 +10,8 @@
 
 void Game::play() {
 	bool p1Turn = true;
-	int previousRow = 0;
-	int previousCol = 0;
+	int previousRow = 3;
+	int previousCol = 4;
 	vector<int> move;
 	while (!Game::isTerminalBoard(p1.getBoard())) {
 		UtilityFunctions::printBoard(p1.getBoard());
