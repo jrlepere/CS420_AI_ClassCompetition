@@ -14,8 +14,6 @@ vector<int> MiniMax_MaxDepth::getMove(vector<vector<int> >& board, int previousR
 }
 
 vector<int> MiniMax_MaxDepth::hMiniMax(vector<vector<int> >& board, int depth, int previousRow, int previousCol) {
-	//int t = HeuristicFunction::terminalBoard(board);
-	//if (abs(t) == MAX) return {t, previousRow, previousCol};
 	if (cutoffTest(board, depth, maxDepth)) return {heuristicFunction.execute(board), previousRow, previousCol};
 	vector<vector<int> > successors = successorFunction.execute(board, previousRow, previousCol);
 	if (depth % 2 == 0) {

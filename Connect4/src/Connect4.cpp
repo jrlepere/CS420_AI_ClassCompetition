@@ -14,6 +14,7 @@
 #include "../algorithms/minimax/MiniMax_IDS.h"
 #include "../algorithms/minimax/MiniMax_MaxDepth.h"
 #include "../algorithms/minimax/heuristic_functions/WinnerOrLoser.h"
+#include "../algorithms/minimax/heuristic_functions/KillerMove1.h"
 #include "../algorithms/minimax/successor_functions/Spiral.h"
 #include "../algorithms/minimax/successor_functions/RowByRow.h"
 #include "../player/Player.h"
@@ -36,13 +37,14 @@ int main() {
 	int maxTime = 28;
 
 	WinnerOrLoser h1;
+	KillerMove1 k1(h1);
 	Spiral sf1;
-	MiniMax_MaxDepth a1(maxTime, 4, sf1, h1);
+	MiniMax_MaxDepth a1(maxTime, 4, sf1, k1);
 	Player p1(a1);
 
 	WinnerOrLoser h2;
 	Spiral sf2;
-	MiniMax_MaxDepth a2(maxTime, 4, sf2, h2);
+	MiniMax_MaxDepth a2(maxTime, 3, sf2, h2);
 	Player p2(a2);
 
 	Game g(p1, p2);
