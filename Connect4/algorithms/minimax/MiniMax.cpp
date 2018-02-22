@@ -36,5 +36,12 @@ bool MiniMax::cutoffTest(vector<vector<int> > board, int depth, int maxDepth) {
 		}
 	}
 
-	return false;
+	// -- TERMINAL BOARD -- //
+	for (int row = 0; row < BOARD_SIZE; row ++) {
+		for (int col = 0; col < BOARD_SIZE; col ++) {
+			if (board[row][col] == 0) return false;
+		}
+	}
+
+	return true;
 }
