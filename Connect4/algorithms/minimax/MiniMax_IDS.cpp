@@ -21,6 +21,6 @@ vector<int> MiniMax_IDS::getMove(vector<vector<int> >& board, int previousRow, i
 	}
 }
 
-vector<int> MiniMax_IDS::hMiniMax(vector<vector<int> >& board, int depth, int previousRow, int previousCol) {
+vector<int> MiniMax_IDS::hMiniMax(vector<vector<int> >& board, int depth, int alpha, int beta, int previousRow, int previousCol) {
 	return {0};
 }

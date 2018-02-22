@@ -18,7 +18,7 @@ public:
 	~MiniMax_MaxDepth(){}
 	vector<int> getMove(vector<vector<int> >& board, int previousRow, int previousCol);
 private:
-	vector<int> hMiniMax(vector<vector<int> >& board, int depth, int previousRow, int previousCol);
+	vector<int> hMiniMax(vector<vector<int> >& board, int depth, int alpha, int beta, int previousRow, int previousCol);
 	int maxDepth;
 };
 

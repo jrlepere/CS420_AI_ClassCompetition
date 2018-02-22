@@ -28,7 +28,7 @@ public:
 	virtual ~MiniMax(){}
 	virtual vector<int> getMove(vector<vector<int> >& board, int previousRow, int previousCol)=0;
 private:
-	virtual vector<int> hMiniMax(vector<vector<int> >& board, int depth, int previousRow, int previousCol)=0;
+	virtual vector<int> hMiniMax(vector<vector<int> >& board, int depth, int alpha, int beta, int previousRow, int previousCol)=0;
 protected:
 	bool cutoffTest(vector<vector<int> > board, int depth, int maxDepth);
 	SuccessorFunction& successorFunction;
