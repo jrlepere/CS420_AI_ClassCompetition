@@ -13,7 +13,8 @@
 class JakesHeuristic: public HeuristicFunction
 {
 public:
-	JakesHeuristic(){}
+	JakesHeuristic(int value):
+		HeuristicFunction(value) {}
 	~JakesHeuristic(){}
 	int execute(vector<vector<int> >& board, int depth);
 private:

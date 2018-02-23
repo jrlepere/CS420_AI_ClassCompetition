@@ -13,8 +13,8 @@
 class Doubles: public HeuristicFunctionDecorator
 {
 public:
-	Doubles(HeuristicFunction& parentHeuristic):
-		HeuristicFunctionDecorator(parentHeuristic){}
+	Doubles(HeuristicFunction& parentHeuristic, int value):
+		HeuristicFunctionDecorator(parentHeuristic, value){}
 	~Doubles(){}
 	int execute(vector<vector<int> >& board, int depth);
 };

@@ -14,8 +14,8 @@
 class TwoAway: public HeuristicFunctionDecorator
 {
 public:
-	TwoAway(HeuristicFunction& parentHeuristic):
-		HeuristicFunctionDecorator(parentHeuristic){}
+	TwoAway(HeuristicFunction& parentHeuristic, int value):
+		HeuristicFunctionDecorator(parentHeuristic, value) {}
 	~TwoAway(){}
 	int execute(vector<vector<int> >& board, int depth);
 };

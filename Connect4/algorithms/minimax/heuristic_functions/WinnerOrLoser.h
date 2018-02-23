@@ -13,7 +13,8 @@
 class WinnerOrLoser: public HeuristicFunction
 {
 public:
-	WinnerOrLoser(){}
+	WinnerOrLoser(int value):
+		HeuristicFunction(value){}
 	~WinnerOrLoser(){}
 	int execute(vector<vector<int> >& board, int depth);
 };

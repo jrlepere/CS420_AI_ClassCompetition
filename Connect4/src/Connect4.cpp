@@ -10,6 +10,7 @@
 #include <iostream>
 #include <vector>
 
+#include "../algorithms/human/Human.h"
 #include "../algorithms/minimax/MiniMax_DFS.h"
 #include "../algorithms/minimax/MiniMax_IDS.h"
 #include "../algorithms/minimax/MiniMax_MaxDepth.h"
@@ -38,19 +39,15 @@ using namespace std;
  */
 int main() {
 
-	int maxTime = 28;
+	int maxTime = 12;
 
-	WinnerOrLoser h1;
-	KillerMove1 k1(h1);
-	OneAway o1(k1);
-	DoublesAndTriples d1(o1);
-	Spiral sf1;
-	MiniMax_IDS a1(maxTime, sf1, d1);
-	Player p1(a1);
+	Human h;
+	Player p1(h);
 
-	JakesHeuristic h2;
+	WinnerOrLoser h2(100);
+	KillerMove1 k2(h2, 99);
 	Spiral sf2;
-	MiniMax_IDS a2(maxTime, sf2, h2);
+	MiniMax_MaxDepth a2(maxTime, 2, sf2, k2);
 	Player p2(a2);
 
 	Game g(p1, p2);

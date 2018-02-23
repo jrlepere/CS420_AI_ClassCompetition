@@ -13,8 +13,8 @@
 class OneAway: public HeuristicFunctionDecorator
 {
 public:
-	OneAway(HeuristicFunction& parentHeuristic):
-		HeuristicFunctionDecorator(parentHeuristic){}
+	OneAway(HeuristicFunction& parentHeuristic, int value):
+		HeuristicFunctionDecorator(parentHeuristic, value){}
 	~OneAway(){}
 	int execute(vector<vector<int> >& board, int depth);
 };

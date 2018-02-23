@@ -16,9 +16,11 @@ using namespace std;
 class HeuristicFunction
 {
 public:
-	HeuristicFunction(){}
+	HeuristicFunction(int value): value(value){}
 	virtual ~HeuristicFunction(){}
 	virtual int execute(vector<vector<int> >& board, int depth)=0;
+protected:
+	int value;
 };
 
 #endif /* HEURISTICFUNCTION_H_ */

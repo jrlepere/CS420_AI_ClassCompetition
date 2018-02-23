@@ -13,8 +13,8 @@
 class KillerMove1: public HeuristicFunctionDecorator
 {
 public:
-	KillerMove1(HeuristicFunction& parentHeuristic):
-		HeuristicFunctionDecorator(parentHeuristic){}
+	KillerMove1(HeuristicFunction& parentHeuristic, int value):
+		HeuristicFunctionDecorator(parentHeuristic, value){}
 	~KillerMove1(){}
 	int execute(vector<vector<int> >& board, int depth);
 };

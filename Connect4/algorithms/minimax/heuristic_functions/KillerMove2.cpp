@@ -12,8 +12,6 @@ int KillerMove2::execute(vector<vector<int> >& board, int depth) {
 	int pRes = parentHeuristic.execute(board, depth);
 	if (pRes != 0) return pRes;
 
-	int value = 99;
-
 	int player;
 	if (depth % 2 == 0) player = MAX;
 	else player = MIN;

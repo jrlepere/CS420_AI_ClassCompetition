@@ -48,7 +48,8 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="minimax|MiniMax" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms"/>
+						<entry excluding="human|minimax|MiniMax" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/human"/>
 						<entry excluding="heuristic_functions|successor_functions" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/minimax"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/minimax/heuristic_functions"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/minimax/successor_functions"/>
@@ -102,7 +103,8 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="minimax|MiniMax" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms"/>
+						<entry excluding="human|minimax|MiniMax" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/human"/>
 						<entry excluding="heuristic_functions|successor_functions" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/minimax"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/minimax/heuristic_functions"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/minimax/successor_functions"/>

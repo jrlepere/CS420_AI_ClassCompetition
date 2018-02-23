@@ -23,8 +23,8 @@ using namespace std;
 */
 
 void UtilityFunctions::printBoard(vector<vector<int> > board) {
-	for (int row = 0; row < 8; row ++) {
-		for (int col = 0; col < 8; col ++) {
+	for (int row = 0; row < BOARD_SIZE; row ++) {
+		for (int col = 0; col < BOARD_SIZE; col ++) {
 			int v = board[row][col];
 			if (v == 1) cout<<"X"<<" ";
 			else if (v == -1) cout<<"0"<<" ";

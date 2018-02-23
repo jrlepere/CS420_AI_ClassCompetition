@@ -13,7 +13,8 @@
 class AlwaysZero: public HeuristicFunction
 {
 public:
-	AlwaysZero(){}
+	AlwaysZero(int value):
+		HeuristicFunction(value) {}
 	~AlwaysZero(){}
 	int execute(vector<vector<int> >& board, int depth);
 };

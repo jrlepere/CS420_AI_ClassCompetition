@@ -15,10 +15,10 @@ int JakesHeuristic::execute(vector<vector<int> >& board, int depth) {
 	v = killerMove(board, depth, 99);
 	if (v != 0) return v;
 
-	v = oneFromKiller(board, depth, 98);
+	v = oneFromKiller(board, depth, 97);
 	if (v != 0) return v;
 
-	v = oneFromWinner(board, depth, 97);
+	v = oneFromWinner(board, depth, 98);
 	if (v != 0) return v;
 
 	return final(board, depth, 96);

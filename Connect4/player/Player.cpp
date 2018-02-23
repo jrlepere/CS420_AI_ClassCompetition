@@ -24,20 +24,13 @@ vector<vector<int> >& Player::getBoard() {
 }
 
 vector<vector<int> > Player::createInitialBoard() {
-	vector<vector<int> > board = {{0,0,0,0,0,0,0,0},
-								  {0,0,0,0,0,0,0,0},
-								  {0,0,0,0,0,0,0,0},
-								  {0,0,0,0,0,0,0,0},
-								  {0,0,0,0,0,0,0,0},
-								  {0,0,0,0,0,0,0,0},
-								  {0,0,0,0,0,0,0,0},
-								  {0,0,0,0,0,0,0,0}};
-	return {{0,0,0,0,0,0,0,0},
-		   {0,0,0,0,0,0,0,0},
-	   	   {0,0,0,0,0,0,0,0},
-		   {0,0,0,0,0,0,0,0},
-		   {0,0,0,0,0,0,0,0},
-		   {0,0,0,0,0,0,0,0},
-		   {0,0,0,0,0,0,0,0},
-		   {0,0,0,0,0,0,0,0}};
+	vector<vector<int> > board;
+	for (int i = 0; i < BOARD_SIZE; i ++) {
+		vector<int> row;
+		for (int j = 0; j < BOARD_SIZE; j ++) {
+			row.push_back(0);
+		}
+		board.push_back(row);
+	}
+	return board;
 }

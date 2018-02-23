@@ -25,10 +25,11 @@ vector<int> MiniMax_MaxDepth::hMiniMax(vector<vector<int> >& board, int depth, i
 			int row = successors[i][0];
 			int col = successors[i][1];
 			board[row][col] = MAX;
-			vector<int> res = hMiniMax(board, depth + 1, alpha, beta, row, col);
+			int newDepth = depth + 1;
+			vector<int> res = hMiniMax(board, newDepth, alpha, beta, row, col);
 			board[row][col] = 0;
 			if (res[0] > v[0]) v = res;
-			if (v[0] >= beta) return v;
+			//if (v[0] >= beta) return v;
 			alpha = max(v[0], alpha);
 		}
 		return v;
@@ -38,10 +39,11 @@ vector<int> MiniMax_MaxDepth::hMiniMax(vector<vector<int> >& board, int depth, i
 			int row = successors[i][0];
 			int col = successors[i][1];
 			board[row][col] = MIN;
-			vector<int> res = hMiniMax(board, depth + 1, alpha, beta, row, col);
+			int newDepth = depth + 1;
+			vector<int> res = hMiniMax(board, newDepth, alpha, beta, row, col);
 			board[row][col] = 0;
 			if (res[0] < v[0]) v = res;
-			if (v[0] <= alpha) return v;
+			//if (v[0] <= alpha) return v;
 			beta = min(v[0], beta);
 		}
 		return v;
