@@ -11,6 +11,7 @@
 #include "../Algorithm.h"
 #include "successor_functions/SuccessorFunction.h"
 #include "heuristic_functions/HeuristicFunction.h"
+#include <time.h>
 
 /**
  * Abstract class definition for MiniMax Algorithm specifically for the Connect 4 game.
