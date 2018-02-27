@@ -9,12 +9,6 @@
 
 int WinnerOrLoser::execute(vector<vector<int> >& board, int depth) {
 
-	int player;
-	if (depth % 2 == 0) player = MAX;
-	else player = MIN;
-
-	bool opponentFound = false;
-
 	// ROW TEST
 	for (int row = 0; row < BOARD_SIZE; row ++) {
 		for (int i = 0; i < 5; i ++) {
@@ -23,8 +17,7 @@ int WinnerOrLoser::execute(vector<vector<int> >& board, int depth) {
 				(board[row][i+1] == board[row][i+2]) &&
 				(board[row][i+2] == board[row][i+3])
 			) {
-				if (board[row][i] != player) opponentFound = true;
-				else return board[row][i] * value;
+				return board[row][i] * value;
 			}
 		}
 	}
@@ -37,13 +30,10 @@ int WinnerOrLoser::execute(vector<vector<int> >& board, int depth) {
 				(board[i+1][col] == board[i+2][col]) &&
 				(board[i+2][col] == board[i+3][col])
 			) {
-				if (board[i][col] != player) opponentFound = true;
-				else return board[i][col] * value;
+				return board[i][col] * value;
 			}
 		}
 	}
-
-	if (opponentFound) return (player * -1) * value;
 
 	return 0;
 }

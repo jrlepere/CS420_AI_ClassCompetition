@@ -20,6 +20,7 @@
 #include "../algorithms/minimax/heuristic_functions/DoublesAndTriples.h"
 #include "../algorithms/minimax/heuristic_functions/OneAway.h"
 #include "../algorithms/minimax/heuristic_functions/JakesHeuristic.h"
+#include "../algorithms/minimax/heuristic_functions/JakesHeuristic2.h"
 #include "../algorithms/minimax/successor_functions/Spiral.h"
 #include "../algorithms/minimax/successor_functions/RowByRow.h"
 #include "../player/Player.h"
@@ -39,15 +40,15 @@ using namespace std;
  */
 int main() {
 
-	int maxTime = 12;
+	int maxTime = 28;
 
 	Human h;
 	Player p1(h);
 
-	WinnerOrLoser h2(100);
-	KillerMove1 k2(h2, 99);
+	JakesHeuristic2 h2(100);
 	Spiral sf2;
-	MiniMax_MaxDepth a2(maxTime, 2, sf2, k2);
+	//MiniMax_MaxDepth a2(maxTime, 4, sf2, h2);
+	MiniMax_IDS a2(maxTime, sf2, h2);
 	Player p2(a2);
 
 	Game g(p1, p2);

@@ -5,6 +5,7 @@
  *      Author: JLepere2
  */
 
+#include <iostream>
 #include "MiniMax_MaxDepth.h"
 
 vector<int> MiniMax_MaxDepth::getMove(vector<vector<int> >& board, int previousRow, int previousCol) {
@@ -17,10 +18,12 @@ vector<int> MiniMax_MaxDepth::getMove(vector<vector<int> >& board, int previousR
 }
 
 vector<int> MiniMax_MaxDepth::hMiniMax(vector<vector<int> >& board, int depth, int alpha, int beta, int previousRow, int previousCol) {
+	//int v1 = heuristicFunction.execute(board, depth);
+	//if (depth != 0 && v1 != 0) return {v1, previousRow, previousCol};
 	if (cutoffTest(board, depth, maxDepth)) return {heuristicFunction.execute(board, depth), previousRow, previousCol};
 	vector<vector<int> > successors = successorFunction.execute(board, previousRow, previousCol);
 	if (depth % 2 == 0) {
-		vector<int> v = {NEG_INF};
+		vector<int> v = {NEG_INF, -1, -1};
 		for (int i = 0; i < successors.size(); i ++) {
 			int row = successors[i][0];
 			int col = successors[i][1];
@@ -28,13 +31,15 @@ vector<int> MiniMax_MaxDepth::hMiniMax(vector<vector<int> >& board, int depth, i
 			int newDepth = depth + 1;
 			vector<int> res = hMiniMax(board, newDepth, alpha, beta, row, col);
 			board[row][col] = 0;
-			if (res[0] > v[0]) v = res;
-			//if (v[0] >= beta) return v;
+			if (res[0] > v[0]) {
+				v = {res[0], row, col};
+			}
+			if (v[0] >= beta) return v;
 			alpha = max(v[0], alpha);
 		}
 		return v;
 	} else {
-		vector<int> v = {INF};
+		vector<int> v = {INF, -1, -1};
 		for (int i = 0; i < successors.size(); i ++) {
 			int row = successors[i][0];
 			int col = successors[i][1];
@@ -42,8 +47,8 @@ vector<int> MiniMax_MaxDepth::hMiniMax(vector<vector<int> >& board, int depth, i
 			int newDepth = depth + 1;
 			vector<int> res = hMiniMax(board, newDepth, alpha, beta, row, col);
 			board[row][col] = 0;
-			if (res[0] < v[0]) v = res;
-			//if (v[0] <= alpha) return v;
+			if (res[0] < v[0]) v = {res[0], row, col};
+			if (v[0] <= alpha) return v;
 			beta = min(v[0], beta);
 		}
 		return v;
