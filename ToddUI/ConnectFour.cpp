@@ -90,7 +90,7 @@ void ConnectFour::printBoard() {
 	std::cout << "\n";
 }
 
-void ConnectFour::putOnBoard(int input, int row, int col) {
+bool ConnectFour::putOnBoard(int input, int row, int col) {
 	// Check for incorrect inputs
 	if (row < 0 ||
 		row >= BOARD_SIZE ||
@@ -98,11 +98,14 @@ void ConnectFour::putOnBoard(int input, int row, int col) {
 		col >= BOARD_SIZE) {
 		
 		std::cout << "Incorrect input - Out of bounds.\n";
-		return;
 	}
+	else if (board[row][col] != 0) std::cout << "Incorrect input - Space already taken\n";
 	else {
 		board.at(row).at(col) = input;
+		return true;
 	}
+
+	return false;
 }
 
 int ConnectFour::UtilityFunction(std::vector< std::vector<int> > state, int player) {

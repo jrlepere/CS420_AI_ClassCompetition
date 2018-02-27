@@ -27,7 +27,7 @@ class ConnectFour {
         bool TerminalTest(std::vector< std::vector<int> > state);
         std::vector< std::vector<int> > getBoard();
         void printBoard();
-		void putOnBoard(int input, int row, int col);
+		bool putOnBoard(int input, int row, int col);
 		int UtilityFunction(std::vector< std::vector<int> > state, int player);
 		int CheckForThree(std::vector< std::vector<int> > state, int player);
 		std::vector< std::vector<int> > getSuccessors(std::vector< std::vector<int> > state);
