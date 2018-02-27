@@ -15,6 +15,6 @@ int JakesHeuristic2::execute(vector<vector<int> >& board, int depth) {
 	WinnerOrLoser t1(100);
 	KillerMove1 t2(t1, 99);
 	OneAway t3(t2, 98);
-	return t1.execute(board, depth);
+	return t3.execute(board, depth);
 
 }

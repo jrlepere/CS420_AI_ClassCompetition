@@ -37,6 +37,7 @@ vector<int> MiniMax_MaxDepth::hMiniMax(vector<vector<int> >& board, int depth, i
 			if (v[0] >= beta) return v;
 			alpha = max(v[0], alpha);
 		}
+		//if (depth == 0) std::cout<<v[0]<<" "<<v[1]<<" "<<v[2]<<"\n";
 		return v;
 	} else {
 		vector<int> v = {INF, -1, -1};
