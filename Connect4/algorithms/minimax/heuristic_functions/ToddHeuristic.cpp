@@ -12,7 +12,7 @@ int ToddHeuristic::execute(vector<vector<int> >& board, int depth) {
 	int v = winnerOrLoser(board, depth, 100);
 	if (v != 0) return v;
 
-	v = ToddHeuristic::preventOpponentKillerMove(board, depth, 97);
+	v = ToddHeuristic::preventOpponentKillerMove(board, depth, 90);
 	if (v != 0) return v;
 
 	v = killerMove(board, depth, 99);
@@ -273,15 +273,19 @@ int ToddHeuristic::preventOpponentKillerMove(vector <vector<int> > & board, int 
 	// Test if it will block the move
 	int testHeuristic = 10;
 
-	// Check vertical
 	for (int i = 0; i < board.size(); i++) {
 		for (int j = 0; j < 7; j++) {
 			// Check for XX_X
 			if (j > 1 &&
-				board[i][j] == 0 &&
+				board[i][j] == player &&
 				board[i][j-2] == (player * -1) &&
 				board[i][j-2] == board[i][j-1] &&
 				board[i][j-2] == board[i][j+1]) {
+
+				for (int debug = 0; debug < board[i].size(); debug++)
+					std::cout << board[i][debug] << " ";
+				std::cout << "\n";
+
 				return value * player;
 			}
 		}
