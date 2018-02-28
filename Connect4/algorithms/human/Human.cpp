@@ -19,7 +19,7 @@ vector<int> Human::getMove(vector<vector<int> >& board, int previousRow, int pre
 		cin>>col;
 
 		if (board[row][col] != 0) {
-			std::cout << "ERROR: Input already taken.";
+			std::cout << "ERROR: Input already taken.\n\n";
 		}
 		else {failSomeTest = false;}
 	} while (failSomeTest);
