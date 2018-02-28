@@ -1,14 +1,15 @@
 package cs420_p3;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import successors.*;
 
 public class MiniMax_MaxDepth {
 	
-	private final int MAX_DEPTH = 2;
+	private final int MAX_DEPTH = 4;
 	private final int MAX_PLAYER = 1;
 	private final int MIN_PLAYER = -1;
 	private final int MAX_H_VALUE = 100;
+	private final int LARGE_POS = 10000;
+	private final int LARGE_NEG = -10000;
 	
 	private State mainBoard;
 		
@@ -17,7 +18,7 @@ public class MiniMax_MaxDepth {
 	}
 	
 	public void play(int prevRow, int prevCol, boolean maxPlayer) {
-		int[] move = MiniMaxAlgo(mainBoard, 0, maxPlayer, prevRow, prevCol);
+		int[] move = MiniMaxAlgo(mainBoard, 0, maxPlayer, LARGE_NEG, LARGE_POS, prevRow, prevCol);
 		int player;
 		if (maxPlayer) {player = MAX_PLAYER;}
 		else {player = MIN_PLAYER;}
@@ -27,73 +28,158 @@ public class MiniMax_MaxDepth {
 		mainBoard.putOnBoard(player, move[1], move[2]);
 	}
 	
-	private int[] MiniMaxAlgo(State board, int depth, boolean maxPlayer, int row, int col) {
+	private int[] MiniMaxAlgo(State board, int depth, boolean maxPlayer, int alpha, int beta, int prevRow, int prevCol) {
 		if (depth == MAX_DEPTH || isTerminalState(board)) {
-			int heuristicH = chosenHeuristic(board, maxPlayer);
+			int heuristicH = chosenHeuristic(board);
 			if (maxPlayer) {heuristicH = heuristicH * -1;}
 			
-			int[] temp = {heuristicH, row, col};
+			int[] temp = {heuristicH};
 			return temp;
 		}
 		
-		int[][] successors = getSuccessors(board.getBoard());
+		Successors suc = new Spiral();
+		int[][] successors = suc.getSuccessors(board.getBoard(), prevRow, prevCol);
 		
 		if (maxPlayer) {
-			int[] bestValue = {-100000, 0, 0};
+			int[] bestValue = {LARGE_NEG, 0, 0};
 			for (int i = 0; i < successors.length; i++) {
-				int prevRow = successors[i][0];
-				int prevCol = successors[i][1];
-				board.putOnBoard(MAX_PLAYER, prevRow, prevCol);
-				int[] v = MiniMaxAlgo(board, depth + 1, !maxPlayer, prevRow, prevCol);
-				board.getBoard()[prevRow][prevCol] = 0;
-				if (v[0] > bestValue[0]) {bestValue = v;}
-				
-				// Debug
-				if (bestValue[0] == MAX_H_VALUE) {return bestValue;}
+				int rowTemp = successors[i][0];
+				int colTemp = successors[i][1];
+				board.putOnBoard(MAX_PLAYER, rowTemp, colTemp);
+				int[] v = MiniMaxAlgo(board, depth + 1, !maxPlayer, alpha, beta, rowTemp, colTemp);
+				board.getBoard()[rowTemp][colTemp] = 0;
+				if (v[0] > bestValue[0]) {
+					bestValue[0] = v[0];
+					bestValue[1] = rowTemp;
+					bestValue[2] = colTemp;
+				}
+				// Alpha-beta pruning
+				if (bestValue[0] >= beta) {return bestValue;}
+				alpha = Math.max(alpha, bestValue[0]);
 			}
 			return bestValue;
 		}
 		else {
-			int[] bestValue = {100000, 0, 0};
+			int[] bestValue = {LARGE_POS, 0, 0};
 			for (int i = 0; i < successors.length; i++) {
-				int prevRow = successors[i][0];
-				int prevCol = successors[i][1];
-				board.putOnBoard(MIN_PLAYER, prevRow, prevCol);
-				int[] v = MiniMaxAlgo(board, depth + 1, !maxPlayer, prevRow, prevCol);
-				board.getBoard()[prevRow][prevCol] = 0; // reset board
-				if (v[0] < bestValue[0]) {bestValue = v;}
-				if (bestValue[0] == (MAX_H_VALUE * -1)) {return bestValue;}
+				int rowTemp = successors[i][0];
+				int colTemp = successors[i][1];
+				board.putOnBoard(MIN_PLAYER, rowTemp, colTemp);
+				int[] v = MiniMaxAlgo(board, depth + 1, !maxPlayer, alpha, beta, rowTemp, colTemp);
+				board.getBoard()[rowTemp][colTemp] = 0; // reset board
+				if (v[0] < bestValue[0]) {
+					bestValue[0] = v[0];
+					bestValue[1] = rowTemp;
+					bestValue[2] = colTemp;
+				}
+				// Alpha beta pruning
+				if (bestValue[0] <= alpha) {return bestValue;}
+				beta = Math.min(beta, bestValue[0]);
 			}
 			return bestValue;
 		}
 	}	
 	
-	private int chosenHeuristic(State board, boolean maxPlayer) {
-		return debugHeuristic(board, maxPlayer);
+	private int chosenHeuristic(State board) {
+		return debugHeuristic(board);
 	}
 	
-	private int debugHeuristic(State board, boolean maxPlayer) {
+	private int debugHeuristic(State board) {
 		if (isTerminalState(board)) {
 			return MAX_H_VALUE; 
 		}
 		
-		int[][] curBoard = board.getBoard();
+		int v;
 		
-		// Check for XX_X
+		v = checkForKillerMoves(board);
+		if (v != 0) {return v;}
+		
+		v = checkForDisjointedSets(board);
+		if (v != 0) {return v;}
+		
+		return 0;
+	}
+	
+	private int checkForDisjointedSets(State boardT) {
+		int[][] curBoard = boardT.getBoard();
+		
 		for (int i = 0; i < curBoard.length; i++) {
 			for (int j = 0; j < curBoard[i].length; j++) {
-				if (j >= 2 && j < curBoard[i].length - 1 &&
+				// -- Row Check -- //
+				// Check for XX_X
+				if (j < curBoard[i].length - 4 &&
 						curBoard[i][j] != 0 &&
-						curBoard[i][j-2] != 0 &&
-						curBoard[i][j-2] != curBoard[i][j] &&
-						curBoard[i][j-2] == curBoard[i][j-1] &&
-						curBoard[i][j-2] == curBoard[i][j+1]) {
+						curBoard[i][j+2] != 0 &&
+						curBoard[i][j] != curBoard[i][j+2] &&
+						curBoard[i][j] == curBoard[i][j+1] &&
+						curBoard[i][j] == curBoard[i][j+3]) {
+					return MAX_H_VALUE - 10;
+				}
+				
+				// Check for X_XX
+				if (j < curBoard[i].length - 4 &&
+						curBoard[i][j] != 0 &&
+						curBoard[i][j+1] != 0 &&
+						curBoard[i][j] != curBoard[i][j+1] &&
+						curBoard[i][j] == curBoard[i][j+2] &&
+						curBoard[i][j] == curBoard[i][j+3]) {
+					return MAX_H_VALUE - 10;
+				}
+				
+				// -- Col Check --//
+				// XX_X
+				if (i < curBoard[i].length - 4 &&
+						curBoard[i][j] != 0 &&
+						curBoard[i+2][j] != 0 &&
+						curBoard[i][j] != curBoard[i+2][j] &&
+						curBoard[i][j] == curBoard[i+1][j] &&
+						curBoard[i][j] == curBoard[i+3][j]) {
+					return MAX_H_VALUE - 10;
+				}
+				
+				// X_XX
+				if (i < curBoard[i].length - 4 &&
+						curBoard[i][j] != 0 &&
+						curBoard[i+1][j] != 0 &&
+						curBoard[i][j] != curBoard[i+1][j] &&
+						curBoard[i][j] == curBoard[i+2][j] &&
+						curBoard[i][j] == curBoard[i+3][j]) {
 					return MAX_H_VALUE - 10;
 				}
 			}
 		}
 		
 		return 0;
+	}
+	
+	private int checkForKillerMoves(State boardT) {
+		int[][] board = boardT.getBoard();
+		int bestValue = 0;
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board[i].length; j++) {
+				// Row test
+				if (j < 4 && 
+					board[i][j] == 0 &&
+					board[i][j+4] == 0 &&
+					board[i][j+1] != 0 &&
+					board[i][j+1] == board[i][j+2] &&
+					board[i][j+1] == board[i][j+3]) {
+					return MAX_H_VALUE - 15;
+				} 
+				
+				// Col test
+				if (i < 4 &&
+					board[i][j] == 0 &&
+					board[i+4][j] == 0 &&
+					board[i+1][j] != 0 &&
+					board[i+1][j] == board[i+2][j] &&
+					board[i+1][j] == board[i+3][j]) {
+					return MAX_H_VALUE - 15;
+				}
+			}
+		}
+		
+		return bestValue;
 	}
 	
 	public boolean isTerminalState(State board2) {
@@ -126,30 +212,6 @@ public class MiniMax_MaxDepth {
 		if (zeroCounter == 0) {return true;} // no open space
 		
 		return false;
-	}
-	
-	private int[][] getSuccessors(int[][] board) {
-		ArrayList< int[] > temp = new ArrayList< int[] >();
-		
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[i].length; j++) {
-				int temp2[] = new int[2];
-				if (board[i][j] == 0) {
-					temp2[0] = i;
-					temp2[1] = j;
-					temp.add(temp2);
-				}
-			}
-		}
-		
-		int[][] returnValue = new int[temp.size()][2];
-		for (int i = 0; i < returnValue.length; i++) {
-			for (int j = 0; j < returnValue[i].length; j++) {
-				returnValue[i][j] = temp.get(i)[j];
-			}
-		}
-		
-		return returnValue;
 	}
 	
 	public State getMainBoard() {return mainBoard;}

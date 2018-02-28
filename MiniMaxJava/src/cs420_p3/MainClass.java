@@ -23,8 +23,8 @@ public class MainClass {
 		boolean playerTurn = true;
 		State mainBoard = mm.getMainBoard();
 		Scanner sc = new Scanner(System.in);
-		mainBoard.putOnBoard(MAX_PLAYER, 3, 0);
-		mainBoard.putOnBoard(MAX_PLAYER, 3, 1);
+		//mainBoard.putOnBoard(MAX_PLAYER, 3, 0);
+		//mainBoard.putOnBoard(MAX_PLAYER, 3, 1);
 		
 		while (!mm.isTerminalState(mainBoard)) {
 			// Player's turn
@@ -37,10 +37,13 @@ public class MainClass {
 			}
 			
 			else {
+				mainBoard.printState();
+				System.out.println("\nAI is thinking...");
 				mm.play(row, col, playerTurn);
 				playerTurn = !playerTurn;
 			}
 		}
+		mainBoard.printState();
 		sc.close();
 	}
 	
