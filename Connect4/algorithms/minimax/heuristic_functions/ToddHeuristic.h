@@ -9,6 +9,9 @@
 #define TODDHEURISTIC_H_
 
 #include "HeuristicFunction.h"
+#include "WinnerOrLoser.h"
+#include "OneAway.h"
+#include "KillerMove1.h"
 #include <iostream>
 
 class ToddHeuristic: public HeuristicFunction
@@ -18,13 +21,13 @@ public:
 		HeuristicFunction(value) {}
 	~ToddHeuristic(){}
 	int execute(vector<vector<int> >& board, int depth);
-private:
+/*private:
 	int winnerOrLoser(vector<vector<int> >& board, int depth, int value);
 	int killerMove(vector<vector<int> >& board, int depth, int value);
 	int oneFromWinner(vector<vector<int> >& board, int depth, int value);
 	int oneFromKiller(vector<vector<int> >& board, int depth, int value);
-	int final(vector<vector<int> >& board, int depth, int value);
 	int preventOpponentKillerMove(vector <vector<int> > & board, int depth, int value);
+	int final(vector<vector<int> >& board, int depth, int value);*/
 };
 
 

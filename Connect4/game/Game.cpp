@@ -26,6 +26,7 @@ void Game::play() {
 			previousRow = move[0];
 			previousCol = move[1];
 		}
+		UtilityFunctions::addMove(previousRow, previousCol);
 		p1Turn = !p1Turn;
 	}
 	UtilityFunctions::printBoard(p1.getBoard());
