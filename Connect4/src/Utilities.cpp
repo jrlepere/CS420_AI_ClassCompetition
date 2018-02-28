@@ -5,11 +5,13 @@
  *      Author: JLepere2
  */
 
-#include <vector>
-#include <iostream>
 #include "Utilities.h"
 
 using namespace std;
+
+vector<string> UtilityFunctions::pastMoves;
+string UtilityFunctions::rowStr[BOARD_SIZE] = {"A","B","C","D","E","F","G"};
+string UtilityFunctions::colStr[BOARD_SIZE] = {"1","2","3","4","5","6","7","8"};
 
 /*
 	for (int row = 0; row < BOARD_SIZE; row ++) {
@@ -23,21 +25,54 @@ using namespace std;
 */
 
 void UtilityFunctions::printBoard(vector<vector<int> > board) {
+	cout << "  0 1 2 3 4 5 6 7"
+		<< "\t" << "Player vs. Opponent" // debug this
+		<< "\n";
+
+	int size = pastMoves.size();
+	int numberOfTurns = floor((size / 2.0) + 0.5);
+	int counterIndex = 0;
+
 	for (int row = 0; row < BOARD_SIZE; row ++) {
+		cout << row << " ";
 		for (int col = 0; col < BOARD_SIZE; col ++) {
 			int v = board[row][col];
 			if (v == 1) cout<<"X"<<" ";
-			else if (v == -1) cout<<"0"<<" ";
-			else cout<<"_"<<" ";
+			else if (v == -1) cout<<"O"<<" ";
+			else cout<<"-"<<" ";
+		}
 
+		if (numberOfTurns > 0) {
+			std::cout << "\t" << (row + 1) << ". " << pastMoves.at(counterIndex++);
+			if (size % 2 == 0) {std::cout << " " << pastMoves.at(counterIndex++);}
+			numberOfTurns--;
 		}
 		cout<<"\n";
+	}
+	int row = 8;
+	while (numberOfTurns > 0) {
+		// Leave some space
+		std::cout << "                 ";
+		std::cout << "\t" << (row++ + 1) << ". " << pastMoves.at(counterIndex++);
+		if (size % 2 == 0) {std::cout << " " << pastMoves.at(counterIndex++);}
+		std::cout << "\n";
+		numberOfTurns--;
 	}
 	cout<<"\n";
 }
 
-int UtilityFunctions::terminalBoard(vector<vector<int> > board, int depth) {
+void UtilityFunctions::addMove(int row, int col) {
+	/*string move = colStr[row];
+	move.append(colStr[col]);
+	pastMoves.push_back(move);*/
 
+	string debug[BOARD_SIZE] = {"0","1","2","3","4","5","6","7"};
+	string move = debug[row];
+	move.append(debug[col]);
+	pastMoves.push_back(move);
+}
+
+int UtilityFunctions::terminalBoard(vector<vector<int> > board, int depth) {
 	int value = 100;
 
 	int player;

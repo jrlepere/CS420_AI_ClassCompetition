@@ -9,6 +9,8 @@ public class MiniMax_MaxDepth {
 	private final int MAX_PLAYER = 1;
 	private final int MIN_PLAYER = -1;
 	private final int MAX_H_VALUE = 100;
+	private final int LARGE_POS = 10000;
+	private final int LARGE_NEG = -10000;
 	
 	private State mainBoard;
 		
@@ -17,7 +19,7 @@ public class MiniMax_MaxDepth {
 	}
 	
 	public void play(int prevRow, int prevCol, boolean maxPlayer) {
-		int[] move = MiniMaxAlgo(mainBoard, 0, maxPlayer, prevRow, prevCol);
+		int[] move = MiniMaxAlgo(mainBoard, 0, maxPlayer, LARGE_NEG, LARGE_POS);
 		int player;
 		if (maxPlayer) {player = MAX_PLAYER;}
 		else {player = MIN_PLAYER;}
@@ -27,26 +29,33 @@ public class MiniMax_MaxDepth {
 		mainBoard.putOnBoard(player, move[1], move[2]);
 	}
 	
-	private int[] MiniMaxAlgo(State board, int depth, boolean maxPlayer, int row, int col) {
+	private int[] MiniMaxAlgo(State board, int depth, boolean maxPlayer, int alpha, int beta) {
 		if (depth == MAX_DEPTH || isTerminalState(board)) {
 			int heuristicH = chosenHeuristic(board, maxPlayer);
 			if (maxPlayer) {heuristicH = heuristicH * -1;}
 			
-			int[] temp = {heuristicH, row, col};
+			int[] temp = {heuristicH};
 			return temp;
 		}
 		
 		int[][] successors = getSuccessors(board.getBoard());
 		
 		if (maxPlayer) {
-			int[] bestValue = {-100000, 0, 0};
+			int[] bestValue = {LARGE_NEG, 0, 0};
 			for (int i = 0; i < successors.length; i++) {
 				int prevRow = successors[i][0];
 				int prevCol = successors[i][1];
 				board.putOnBoard(MAX_PLAYER, prevRow, prevCol);
-				int[] v = MiniMaxAlgo(board, depth + 1, !maxPlayer, prevRow, prevCol);
+				int[] v = MiniMaxAlgo(board, depth + 1, !maxPlayer, alpha, beta);
 				board.getBoard()[prevRow][prevCol] = 0;
-				if (v[0] > bestValue[0]) {bestValue = v;}
+				if (v[0] > bestValue[0]) {
+					bestValue[0] = v[0];
+					bestValue[1] = prevRow;
+					bestValue[2] = prevCol;
+				}
+				// Alpha-beta pruning
+				if (bestValue[0] >= beta) {return bestValue;}
+				alpha = Math.max(alpha, bestValue[0]);
 				
 				// Debug
 				if (bestValue[0] == MAX_H_VALUE) {return bestValue;}
@@ -54,14 +63,22 @@ public class MiniMax_MaxDepth {
 			return bestValue;
 		}
 		else {
-			int[] bestValue = {100000, 0, 0};
+			int[] bestValue = {LARGE_POS, 0, 0};
 			for (int i = 0; i < successors.length; i++) {
 				int prevRow = successors[i][0];
 				int prevCol = successors[i][1];
 				board.putOnBoard(MIN_PLAYER, prevRow, prevCol);
-				int[] v = MiniMaxAlgo(board, depth + 1, !maxPlayer, prevRow, prevCol);
+				int[] v = MiniMaxAlgo(board, depth + 1, !maxPlayer, alpha, beta);
 				board.getBoard()[prevRow][prevCol] = 0; // reset board
-				if (v[0] < bestValue[0]) {bestValue = v;}
+				if (v[0] < bestValue[0]) {
+					bestValue[0] = v[0];
+					bestValue[1] = prevRow;
+					bestValue[2] = prevCol;
+				}
+				// Alpha beta pruning
+				if (bestValue[0] <= alpha) {return bestValue;}
+				beta = Math.min(beta, bestValue[0]);
+				
 				if (bestValue[0] == (MAX_H_VALUE * -1)) {return bestValue;}
 			}
 			return bestValue;

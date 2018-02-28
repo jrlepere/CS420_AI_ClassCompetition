@@ -1,7 +1,7 @@
 package cs420_p3;
 
 public class State {
-	public static final int BOARD_SIZE = 4;
+	public static final int BOARD_SIZE = 8;
 	
 	private int[][] board;
 	private boolean maxPlayer;
@@ -9,10 +9,6 @@ public class State {
 	public State() {
 		board = new int[BOARD_SIZE][BOARD_SIZE];
 		initBoard();
-	}
-	
-	public State(int[][] board) {
-		this.board = board;
 	}
 	
 	public void printState() {

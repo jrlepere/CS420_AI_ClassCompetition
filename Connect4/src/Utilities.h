@@ -9,6 +9,9 @@
 #define UTILITIES_H_
 
 #include <vector>
+#include <string>
+#include <math.h>
+#include <iostream>
 
 using namespace std;
 
@@ -25,6 +28,11 @@ class UtilityFunctions
 public:
 	static void printBoard(vector<vector<int> > board);
 	static int terminalBoard(vector<vector<int> > board, int depth);
+	static void addMove(int row, int col);
+private:
+	static vector<string> pastMoves;
+	static string rowStr[BOARD_SIZE];
+	static string colStr[BOARD_SIZE];
 };
 
 #endif /* UTILITIES_H_ */

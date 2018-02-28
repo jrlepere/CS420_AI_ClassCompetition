@@ -41,6 +41,7 @@ public class MainClass {
 				playerTurn = !playerTurn;
 			}
 		}
+		mainBoard.printState();
 		sc.close();
 	}
 	
