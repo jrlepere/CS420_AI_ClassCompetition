@@ -5,6 +5,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../algorithms/minimax/heuristic_functions/AlwaysZero.cpp \
+../algorithms/minimax/heuristic_functions/CanWin.cpp \
 ../algorithms/minimax/heuristic_functions/Disjoint.cpp \
 ../algorithms/minimax/heuristic_functions/Doubles.cpp \
 ../algorithms/minimax/heuristic_functions/DoublesAndTriples.cpp \
@@ -19,6 +20,7 @@ CPP_SRCS += \
 
 OBJS += \
 ./algorithms/minimax/heuristic_functions/AlwaysZero.o \
+./algorithms/minimax/heuristic_functions/CanWin.o \
 ./algorithms/minimax/heuristic_functions/Disjoint.o \
 ./algorithms/minimax/heuristic_functions/Doubles.o \
 ./algorithms/minimax/heuristic_functions/DoublesAndTriples.o \
@@ -33,6 +35,7 @@ OBJS += \
 
 CPP_DEPS += \
 ./algorithms/minimax/heuristic_functions/AlwaysZero.d \
+./algorithms/minimax/heuristic_functions/CanWin.d \
 ./algorithms/minimax/heuristic_functions/Disjoint.d \
 ./algorithms/minimax/heuristic_functions/Doubles.d \
 ./algorithms/minimax/heuristic_functions/DoublesAndTriples.d \

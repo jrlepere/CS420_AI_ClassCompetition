@@ -8,15 +8,17 @@
 #include "Player.h"
 
 vector<int> Player::play(int previousRow, int previousCol) {
-	vector<int> move = algo.getMove(board, previousRow, previousCol);
+	vector<int> move = algo.getMove(board, previousRow, previousCol, tilesPlaced);
 	int row = move[0];
 	int col = move[1];
 	board[row][col] = 1;
+	tilesPlaced += 1;
 	return move;
 }
 
 void Player::opponentPlay(int row, int col) {
 	board[row][col] = -1;
+	tilesPlaced += 1;
 }
 
 vector<vector<int> >& Player::getBoard() {

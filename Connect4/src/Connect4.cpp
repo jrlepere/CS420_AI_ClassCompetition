@@ -40,7 +40,7 @@ using namespace std;
  */
 int main() {
 
-	int maxTime = 28;
+	int maxTime = 60;
 
 	Human h;
 	Player p1(h);

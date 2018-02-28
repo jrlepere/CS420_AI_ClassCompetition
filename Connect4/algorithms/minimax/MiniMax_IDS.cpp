@@ -8,16 +8,16 @@
 #include "MiniMax_IDS.h"
 #include "MiniMax_MaxDepth.h"
 
-vector<int> MiniMax_IDS::getMove(vector<vector<int> >& board, int previousRow, int previousCol) {
+vector<int> MiniMax_IDS::getMove(vector<vector<int> >& board, int previousRow, int previousCol, int currentNumTiles) {
 	startTime = time(0);
 	int maxDepth = 1;
 	vector<int> bestMove;
 	while (true) {
 		MiniMax_MaxDepth m(maxTime - difftime(time(0), startTime), maxDepth, successorFunction, heuristicFunction);
-		vector<int> res = m.getMove(board, previousRow, previousCol);
+		vector<int> res = m.getMove(board, previousRow, previousCol, currentNumTiles);
 		if (difftime(time(0), startTime) > maxTime) return bestMove;
 		bestMove = res;
-		maxDepth ++;
+		maxDepth += 2;
 	}
 }
 

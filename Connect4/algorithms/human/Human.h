@@ -16,7 +16,7 @@ public:
 	Human():
 		Algorithm(0) {};
 	~Human(){};
-	vector<int> getMove(vector<vector<int> >& board, int previousRow, int previousCol);
+	vector<int> getMove(vector<vector<int> >& board, int previousRow, int previousCol, int currentNumTiles);
 };
 
 #endif /* HUMAN_H_ */

@@ -69,6 +69,3 @@ int Disjoint::execute(vector<vector<int> >& board, int depth) {
 
 	return 0;
 }
-
-
-

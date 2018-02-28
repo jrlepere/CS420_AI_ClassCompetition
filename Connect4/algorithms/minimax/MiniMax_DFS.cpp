@@ -7,7 +7,7 @@
 
 #include "MiniMax_DFS.h"
 
-vector<int> MiniMax_DFS::getMove(vector<vector<int> >& board, int previousRow, int previousCol) {
+vector<int> MiniMax_DFS::getMove(vector<vector<int> >& board, int previousRow, int previousCol, int currentNumTiles) {
 	startTime = time(0);
 	int alpha = NEG_INF;
 	int beta = INF;

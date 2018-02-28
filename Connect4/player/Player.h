@@ -19,7 +19,7 @@ class Player
 {
 public:
 	Player(Algorithm& algo):
-		algo(algo) {
+		algo(algo), tilesPlaced(0) {
 		board = createInitialBoard();
 	}
 	~Player(){}
@@ -30,6 +30,7 @@ private:
 	vector<vector<int> > createInitialBoard();
 	Algorithm& algo;
 	vector<vector<int> > board;
+	int tilesPlaced;
 };
 
 #endif /* PLAYER_H_ */

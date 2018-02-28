@@ -36,7 +36,7 @@ public:
 	 *   the 0 index represents the row and
 	 *   the 1 index represents the col.
 	 */
-	virtual vector<int> getMove(vector<vector<int> >& board, int previousRow, int previousCol)=0;
+	virtual vector<int> getMove(vector<vector<int> >& board, int previousRow, int previousCol, int currentNumTiles)=0;
 
 protected:
 	int maxTime; // The maximum time the algorithm can execute for before having to return a move.

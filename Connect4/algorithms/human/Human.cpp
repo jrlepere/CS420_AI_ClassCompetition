@@ -8,7 +8,7 @@
 #include <iostream>
 #include "Human.h"
 
-vector<int> Human::getMove(vector<vector<int> >& board, int previousRow, int previousCol) {
+vector<int> Human::getMove(vector<vector<int> >& board, int previousRow, int previousCol, int currentNumTiles) {
 	int row;
 	int col;
 	cout<<"row: ";
