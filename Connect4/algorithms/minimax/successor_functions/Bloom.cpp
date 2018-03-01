@@ -70,12 +70,12 @@ vector<vector<int> > Bloom::execute(vector<vector<int> >& board, int previousRow
 		}
 		i ++;
 	}
-	cout<<successors.size()<<"\n";
+	/*cout<<successors.size()<<"\n";
 	for (int t = 0; t < successors.size(); t ++) {
 		cout<<successors[t][0]<<" "<<successors[t][1]<<"\n";
 	}
 	cout<<"---------------------\n\n\n";
 	int f;
-	cin>>f;
+	cin>>f;*/
 	return successors;
 }

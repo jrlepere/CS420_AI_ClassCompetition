@@ -30,10 +30,7 @@
 using namespace std;
 
 /*
- * TODO: AB pruning
  * TODO: Documentation.
- * TODO: Integer MIN/MAX
- * TODO: Kill states
  */
 
 /**
