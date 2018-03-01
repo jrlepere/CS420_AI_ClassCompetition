@@ -23,6 +23,7 @@
 #include "../algorithms/minimax/heuristic_functions/JakesHeuristic2.h"
 #include "../algorithms/minimax/successor_functions/Spiral.h"
 #include "../algorithms/minimax/successor_functions/RowByRow.h"
+#include "../algorithms/minimax/successor_functions/Bloom.h"
 #include "../player/Player.h"
 #include "../game/Game.h"
 
@@ -46,7 +47,7 @@ int main() {
 	Player p1(h);
 
 	JakesHeuristic2 h2(100);
-	Spiral sf2;
+	Bloom sf2;
 	//MiniMax_MaxDepth a2(maxTime, 4, sf2, h2);
 	MiniMax_IDS a2(maxTime, sf2, h2);
 	Player p2(a2);
