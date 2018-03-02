@@ -11,6 +11,7 @@
 #include "../Algorithm.h"
 #include "successor_functions/SuccessorFunction.h"
 #include "heuristic_functions/HeuristicFunction.h"
+#include "hash_tables/VisitedHashTable.h"
 #include <time.h>
 
 /**
@@ -34,6 +35,7 @@ protected:
 	bool cutoffTest(vector<vector<int> > board, int depth, int maxDepth);
 	SuccessorFunction& successorFunction;
 	HeuristicFunction& heuristicFunction;
+	VisitedHashTable visitedHash;
 	int currentTilesPlaced;
 };
 

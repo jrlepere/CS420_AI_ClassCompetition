@@ -25,6 +25,7 @@ C_DEPS :=
 SUBDIRS := \
 algorithms/human \
 algorithms/minimax \
+algorithms/minimax/hash_tables \
 algorithms/minimax/heuristic_functions \
 algorithms/minimax/successor_functions \
 game \

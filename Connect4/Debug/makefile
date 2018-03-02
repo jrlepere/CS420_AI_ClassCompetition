@@ -13,6 +13,7 @@ RM := rm -rf
 -include game/subdir.mk
 -include algorithms/minimax/successor_functions/subdir.mk
 -include algorithms/minimax/heuristic_functions/subdir.mk
+-include algorithms/minimax/hash_tables/subdir.mk
 -include algorithms/minimax/subdir.mk
 -include algorithms/human/subdir.mk
 -include subdir.mk

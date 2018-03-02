@@ -16,7 +16,7 @@ vector<int> MiniMax_MaxDepth::getMove(vector<vector<int> >& board, int previousR
 	int depth = 0;
 	count = 0;
 	vector<int> move = hMiniMax(board, depth, alpha, beta, previousRow, previousCol);
-	cout<<count<<"\n";
+	cout<<difftime(time(0), startTime)<<" - "<<count<<"\n";
 	return {move[1], move[2]};
 }
 
@@ -31,7 +31,16 @@ vector<int> MiniMax_MaxDepth::hMiniMax(vector<vector<int> >& board, int depth, i
 			int col = successors[i][1];
 			board[row][col] = MAX;
 			int newDepth = depth + 1;
-			vector<int> res = hMiniMax(board, newDepth, alpha, beta, row, col);
+			//vector<int> res = hMiniMax(board, newDepth, alpha, beta, row, col);
+			vector<int> res;
+			int visistedValue = visitedHash.getValue(board);
+			if (visistedValue != VisitedHashTable::NOT_VISITED_VALUE) {
+				//cout<<"checking\n";
+				res = {visistedValue};
+			} else {
+				res = hMiniMax(board, newDepth, alpha, beta, row, col);
+				visitedHash.addVisited(board, res[0]);
+			}
 			board[row][col] = 0;
 			if (res[0] > v[0]) {v = {res[0], row, col};}
 			if (v[0] >= beta) return v;
@@ -47,7 +56,16 @@ vector<int> MiniMax_MaxDepth::hMiniMax(vector<vector<int> >& board, int depth, i
 			int col = successors[i][1];
 			board[row][col] = MIN;
 			int newDepth = depth + 1;
-			vector<int> res = hMiniMax(board, newDepth, alpha, beta, row, col);
+			//vector<int> res = hMiniMax(board, newDepth, alpha, beta, row, col);
+			vector<int> res;
+			int visistedValue = visitedHash.getValue(board);
+			if (visistedValue != VisitedHashTable::NOT_VISITED_VALUE) {
+				//cout<<"checking\n";
+				res = {visistedValue};
+			} else {
+				res = hMiniMax(board, newDepth, alpha, beta, row, col);
+				visitedHash.addVisited(board, res[0]);
+			}
 			board[row][col] = 0;
 			if (res[0] < v[0]) v = {res[0], row, col};
 			if (v[0] <= alpha) return v;
