@@ -9,14 +9,13 @@
 
 void VisitedHashTable::addVisited(vector<vector<int> >& board, int eval) {
 	map.insert({getHash1(board), eval});
-	map.insert({getHash2(board), eval});
-	//addHash2(board, eval);
-	map.insert({getHash3(board), eval});
-	map.insert({getHash4(board), eval});
+	//map.insert({getHash2(board), eval});
+	//map.insert({getHash3(board), eval});
+	//map.insert({getHash4(board), eval});
 	map.insert({getHash5(board), eval});
-	map.insert({getHash6(board), eval});
-	map.insert({getHash7(board), eval});
-	map.insert({getHash8(board), eval});
+	//map.insert({getHash6(board), eval});
+	//map.insert({getHash7(board), eval});
+	//map.insert({getHash8(board), eval});
 }
 
 int VisitedHashTable::getValue(vector<vector<int> >& board) {

@@ -38,7 +38,7 @@ using namespace std;
  */
 int main() {
 
-	int maxTime = 1000;
+	int maxTime = 30;
 
 	Human h;
 	Player p1(h);
