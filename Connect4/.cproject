@@ -50,7 +50,8 @@
 					<sourceEntries>
 						<entry excluding="human|minimax|MiniMax" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/human"/>
-						<entry excluding="heuristic_functions|successor_functions" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/minimax"/>
+						<entry excluding="hash_tables|heuristic_functions|successor_functions" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/minimax"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/minimax/hash_tables"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/minimax/heuristic_functions"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/minimax/successor_functions"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="game"/>
@@ -105,7 +106,8 @@
 					<sourceEntries>
 						<entry excluding="human|minimax|MiniMax" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/human"/>
-						<entry excluding="heuristic_functions|successor_functions" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/minimax"/>
+						<entry excluding="hash_tables|heuristic_functions|successor_functions" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/minimax"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/minimax/hash_tables"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/minimax/heuristic_functions"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="algorithms/minimax/successor_functions"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="game"/>
