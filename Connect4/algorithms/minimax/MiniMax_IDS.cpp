@@ -17,7 +17,8 @@ vector<int> MiniMax_IDS::getMove(vector<vector<int> >& board, int previousRow, i
 		vector<int> res = m.getMove(board, previousRow, previousCol, currentNumTiles);
 		if (difftime(time(0), startTime) > maxTime) return bestMove;
 		bestMove = res;
-		maxDepth += 2;
+		if (maxDepth == 6) return bestMove;
+		maxDepth += 1;
 	}
 }
 

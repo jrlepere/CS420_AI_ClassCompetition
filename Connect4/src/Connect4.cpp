@@ -51,6 +51,9 @@ int main() {
 
 	Game g(p1, p2);
 	g.play();
-
+	cout<<"???\n";
+	string s = "" + 1;
+	cout<<s;
+	cout<<s;
 	return 0;
 }
