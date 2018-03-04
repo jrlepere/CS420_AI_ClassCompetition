@@ -9,6 +9,8 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm> // to transform string to lowercase
+#include <string>
 
 #include "../algorithms/human/Human.h"
 #include "../algorithms/minimax/MiniMax_DFS.h"
@@ -30,6 +32,9 @@
 
 using namespace std;
 
+int timeToThink();
+bool whoGoesFirst();
+
 /*
  * TODO: Documentation.
  */
@@ -39,18 +44,61 @@ using namespace std;
  */
 int main() {
 
-	int maxTime = 300;
+	int maxTime = 30;
+	maxTime = timeToThink();
+
+	bool playerGoesFirst;
+	playerGoesFirst = whoGoesFirst();
 
 	Human h;
 	Player p1(h);
 
 	JakesHeuristic2 h2(100);
 	Bloom sf2;
+	//MiniMax_MaxDepth a2(maxTime, 4, sf2, h2);
 	MiniMax_EIDS a2(maxTime, sf2, h2);
 	Player p2(a2);
 
-	Game g(p1, p2);
-	g.play();
-
+	// Our AI goes first
+	if (playerGoesFirst) {
+		Game g(p2, p1);
+		g.play(playerGoesFirst);
+	}
+	// Their AI goes first
+	else {
+		Game g(p1, p2);
+		g.play(!playerGoesFirst);
+	}
+	
 	return 0;
+}
+
+int timeToThink() {
+	int timeReturn = 0;
+	cout << "Enter time to think: ";
+	cin >> timeReturn;
+	return timeReturn;
+}
+
+/*
+* Returns true if player goes first.
+*/
+bool whoGoesFirst() {
+	bool correctInput = false;;
+	string input;
+	do {
+		cout << "Who goes first, player or opponent? ";
+		cin >> input;
+
+		// Transform input into all lowercase
+		std::transform(input.begin(), input.end(), input.begin(), ::tolower);
+
+		if (input.compare("player") != 0 && input.compare("opponent") != 0) {
+			cout << "Incorrect player.\n\n";
+		}
+		else {correctInput = true;}
+	} while (!correctInput);
+
+	if (input.compare("player") == 0) {return true;}
+	else {return false;}
 }
