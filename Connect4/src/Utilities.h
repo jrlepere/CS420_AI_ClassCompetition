@@ -27,6 +27,7 @@ class UtilityFunctions
 {
 public:
 	static void printBoard(vector<vector<int> > board);
+	static void printBoard(vector<vector<int> > board, bool opponentFirst);
 	static int terminalBoard(vector<vector<int> > board, int depth);
 	static void addMove(int row, int col);
 private:

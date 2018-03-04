@@ -47,8 +47,8 @@ int main() {
 	int maxTime = 30;
 	maxTime = timeToThink();
 
-	bool playerGoesFirst;
-	playerGoesFirst = whoGoesFirst();
+	bool opponentAIGoesFirst;
+	opponentAIGoesFirst = whoGoesFirst();
 
 	Human h;
 	Player p1(h);
@@ -59,16 +59,8 @@ int main() {
 	MiniMax_EIDS a2(maxTime, sf2, h2);
 	Player p2(a2);
 
-	// Our AI goes first
-	if (playerGoesFirst) {
-		Game g(p2, p1);
-		g.play(playerGoesFirst);
-	}
-	// Their AI goes first
-	else {
-		Game g(p1, p2);
-		g.play(!playerGoesFirst);
-	}
+	Game g(p1, p2);
+	g.play(opponentAIGoesFirst);
 	
 	return 0;
 }
@@ -81,7 +73,7 @@ int timeToThink() {
 }
 
 /*
-* Returns true if player goes first.
+* Returns true if opponent's AI goes first.
 */
 bool whoGoesFirst() {
 	bool correctInput = false;;
@@ -99,6 +91,6 @@ bool whoGoesFirst() {
 		else {correctInput = true;}
 	} while (!correctInput);
 
-	if (input.compare("player") == 0) {return true;}
-	else {return false;}
+	if (input.compare("player") == 0) {return false;}
+	else {return true;}
 }

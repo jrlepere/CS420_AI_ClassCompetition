@@ -8,13 +8,14 @@
 #include <iostream>
 #include "Game.h"
 
-void Game::play() {
-	bool p1Turn = true;
+void Game::play(bool opponentTurn) {
+	//bool p1Turn = true;
+	bool p1Turn = opponentTurn; // p1 is opponent AI, p2 is our AI
 	int previousRow = 3;
 	int previousCol = 4;
 	vector<int> move;
 	while (!Game::isTerminalBoard(p1.getBoard())) {
-		UtilityFunctions::printBoard(p1.getBoard());
+		UtilityFunctions::printBoard(p1.getBoard(), opponentTurn);
 		if (p1Turn) {
 			move = p1.play(previousRow, previousCol);
 			p2.opponentPlay(move[0], move[1]);
@@ -29,7 +30,14 @@ void Game::play() {
 		UtilityFunctions::addMove(previousRow, previousCol);
 		p1Turn = !p1Turn;
 	}
-	UtilityFunctions::printBoard(p1.getBoard());
+	UtilityFunctions::printBoard(p1.getBoard(), opponentTurn);
+	
+	bool p1Won = !p1Turn; // need to reverse it again
+	// Since opponent is ALWAYS p1 in our implementation
+	if (p1Won)
+		std::cout << "You lost... Better luck next time.\n";
+	else
+		std::cout << "You won!\n";
 }
 
 bool Game::isTerminalBoard(vector<vector<int> >& board) {

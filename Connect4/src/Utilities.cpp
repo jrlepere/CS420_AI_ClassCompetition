@@ -10,7 +10,7 @@
 using namespace std;
 
 vector<string> UtilityFunctions::pastMoves;
-string UtilityFunctions::rowStr[BOARD_SIZE] = {"A","B","C","D","E","F","G"};
+string UtilityFunctions::rowStr[BOARD_SIZE] = {"a","b","c","d","e","f","g", "h"};
 string UtilityFunctions::colStr[BOARD_SIZE] = {"1","2","3","4","5","6","7","8"};
 
 /*
@@ -25,16 +25,12 @@ string UtilityFunctions::colStr[BOARD_SIZE] = {"1","2","3","4","5","6","7","8"};
 */
 
 void UtilityFunctions::printBoard(vector<vector<int> > board) {
-	cout << "  0 1 2 3 4 5 6 7"
-		<< "\t" << "Player vs. Opponent" // debug this
-		<< "\n";
-
-	int size = pastMoves.size();
-	int numberOfTurns = floor((size / 2.0) + 0.5);
+	int pastMovesSize = pastMoves.size();
+	int numberOfTurns = floor((pastMovesSize / 2.0) + 0.5);
 	int counterIndex = 0;
 
 	for (int row = 0; row < BOARD_SIZE; row ++) {
-		cout << row << " ";
+		cout << rowStr[row] << " ";
 		for (int col = 0; col < BOARD_SIZE; col ++) {
 			int v = board[row][col];
 			if (v == 1) cout<<"X"<<" ";
@@ -44,32 +40,50 @@ void UtilityFunctions::printBoard(vector<vector<int> > board) {
 
 		if (numberOfTurns > 0) {
 			std::cout << "\t" << (row + 1) << ". " << pastMoves.at(counterIndex++);
-			if (size % 2 == 0) {std::cout << " " << pastMoves.at(counterIndex++);}
+			if (counterIndex < pastMovesSize && counterIndex % 2 == 1) {
+				std::cout << " " << pastMoves.at(counterIndex++);
+			}
 			numberOfTurns--;
 		}
 		cout<<"\n";
 	}
+	if (pastMovesSize > 0) {
+		cout << "Most recent move: " << pastMoves.at(pastMovesSize - 1);
+	}
+
 	int row = 8;
 	while (numberOfTurns > 0) {
 		// Leave some space
-		std::cout << "                 ";
+		if (row == 8) {cout << "   ";}
+		else {std::cout << "                 ";}
+		
 		std::cout << "\t" << (row++ + 1) << ". " << pastMoves.at(counterIndex++);
-		if (size % 2 == 0) {std::cout << " " << pastMoves.at(counterIndex++);}
+		if (counterIndex < pastMovesSize && counterIndex % 2 == 1) {
+			std::cout << " " << pastMoves.at(counterIndex++);
+		}
 		std::cout << "\n";
 		numberOfTurns--;
 	}
-	cout<<"\n";
+	cout<<"\n\n";
+}
+
+void UtilityFunctions::printBoard(vector<vector<int> > board, bool opponentFirst) {
+	cout << "  1 2 3 4 5 6 7 8\t";
+	if (opponentFirst) {cout << "Opponent vs. Player";}
+	else {cout << "Player vs. Opponent";}
+	cout << "\n";
+	UtilityFunctions::printBoard(board);
 }
 
 void UtilityFunctions::addMove(int row, int col) {
-	/*string move = colStr[row];
+	string move = rowStr[row];
 	move.append(colStr[col]);
-	pastMoves.push_back(move);*/
+	pastMoves.push_back(move);
 
-	string debug[BOARD_SIZE] = {"0","1","2","3","4","5","6","7"};
+	/*string debug[BOARD_SIZE] = {"0","1","2","3","4","5","6","7"};
 	string move = debug[row];
 	move.append(debug[col]);
-	pastMoves.push_back(move);
+	pastMoves.push_back(move);*/
 }
 
 int UtilityFunctions::terminalBoard(vector<vector<int> > board, int depth) {

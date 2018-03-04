@@ -9,6 +9,7 @@
 #define RANDOM_H_
 
 #include "HeuristicFunctionDecorator.h"
+#include <ctime>
 
 class Random: public HeuristicFunctionDecorator
 {

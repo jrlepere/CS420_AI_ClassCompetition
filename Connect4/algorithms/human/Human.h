@@ -9,6 +9,7 @@
 #define HUMAN_H_
 
 #include "../Algorithm.h"
+#include "../../src/Utilities.h"
 
 class Human: public Algorithm
 {
