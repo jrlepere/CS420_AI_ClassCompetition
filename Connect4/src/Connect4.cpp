@@ -12,6 +12,7 @@
 
 #include "../algorithms/human/Human.h"
 #include "../algorithms/minimax/MiniMax_DFS.h"
+#include "../algorithms/minimax/MiniMax_EIDS.h"
 #include "../algorithms/minimax/MiniMax_IDS.h"
 #include "../algorithms/minimax/MiniMax_MaxDepth.h"
 #include "../algorithms/minimax/heuristic_functions/WinnerOrLoser.h"
@@ -38,7 +39,7 @@ using namespace std;
  */
 int main() {
 
-	int maxTime = 3000;
+	int maxTime = 30;
 
 	Human h;
 	Player p1(h);
@@ -46,7 +47,7 @@ int main() {
 	JakesHeuristic2 h2(100);
 	Bloom sf2;
 	//MiniMax_MaxDepth a2(maxTime, 4, sf2, h2);
-	MiniMax_IDS a2(maxTime, sf2, h2);
+	MiniMax_EIDS a2(maxTime, sf2, h2);
 	Player p2(a2);
 
 	Game g(p1, p2);

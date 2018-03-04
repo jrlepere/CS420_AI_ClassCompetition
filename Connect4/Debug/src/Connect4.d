@@ -7,6 +7,7 @@ src/Connect4.o: ../src/Connect4.cpp ../src/../algorithms/human/Human.h \
   ../src/../algorithms/minimax/heuristic_functions/HeuristicFunction.h \
   ../src/../algorithms/minimax/hash_tables/VisitedHashTable.h \
   ../src/../algorithms/minimax/hash_tables/ZobristHash.h \
+  ../src/../algorithms/minimax/MiniMax_EIDS.h \
   ../src/../algorithms/minimax/MiniMax_IDS.h \
   ../src/../algorithms/minimax/MiniMax_MaxDepth.h \
   ../src/../algorithms/minimax/heuristic_functions/WinnerOrLoser.h \
@@ -39,6 +40,8 @@ src/Connect4.o: ../src/Connect4.cpp ../src/../algorithms/human/Human.h \
 ../src/../algorithms/minimax/hash_tables/VisitedHashTable.h:
 
 ../src/../algorithms/minimax/hash_tables/ZobristHash.h:
+
+../src/../algorithms/minimax/MiniMax_EIDS.h:
 
 ../src/../algorithms/minimax/MiniMax_IDS.h:
 

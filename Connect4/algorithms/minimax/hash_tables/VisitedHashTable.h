@@ -24,6 +24,9 @@ public:
 	~VisitedHashTable(){
 		map.clear();
 	};
+	void clear() {
+		map.clear();
+	}
 	void addVisited(vector<vector<int> >& board, vector<vector<int> >& initialBoard, int eval);
 	int getValue(vector<vector<int> >& board);
 	static const int NOT_VISITED_VALUE = 15353263;

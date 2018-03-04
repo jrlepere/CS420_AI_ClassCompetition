@@ -6,18 +6,21 @@
 CPP_SRCS += \
 ../algorithms/minimax/MiniMax.cpp \
 ../algorithms/minimax/MiniMax_DFS.cpp \
+../algorithms/minimax/MiniMax_EIDS.cpp \
 ../algorithms/minimax/MiniMax_IDS.cpp \
 ../algorithms/minimax/MiniMax_MaxDepth.cpp 
 
 OBJS += \
 ./algorithms/minimax/MiniMax.o \
 ./algorithms/minimax/MiniMax_DFS.o \
+./algorithms/minimax/MiniMax_EIDS.o \
 ./algorithms/minimax/MiniMax_IDS.o \
 ./algorithms/minimax/MiniMax_MaxDepth.o 
 
 CPP_DEPS += \
 ./algorithms/minimax/MiniMax.d \
 ./algorithms/minimax/MiniMax_DFS.d \
+./algorithms/minimax/MiniMax_EIDS.d \
 ./algorithms/minimax/MiniMax_IDS.d \
 ./algorithms/minimax/MiniMax_MaxDepth.d 
 
