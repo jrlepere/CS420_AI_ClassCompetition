@@ -28,7 +28,7 @@ public:
 	MiniMax(int maxTime, SuccessorFunction& successorFunction, HeuristicFunction& heuristicFunction):
 		Algorithm(maxTime), successorFunction(successorFunction), heuristicFunction(heuristicFunction), currentTilesPlaced(0) {}
 	virtual ~MiniMax(){
-		visitedHash.~VisitedHashTable();
+		//visitedHash.~VisitedHashTable();
 	}
 	virtual vector<int> getMove(vector<vector<int> >& board, int previousRow, int previousCol, int currentNumTiles)=0;
 private:

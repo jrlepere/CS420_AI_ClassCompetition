@@ -9,7 +9,16 @@
 #include "MiniMax_MaxDepth.h"
 
 vector<int> MiniMax_MaxDepth::getMove(vector<vector<int> >& board, int previousRow, int previousCol, int currentNumTiles) {
-	currentTilesPlaced = currentNumTiles;
+	// TODO: OPTIMIZE????
+	initialBoard.clear();
+	for (int r = 0; r < BOARD_SIZE; r ++) {
+		vector<int> rv;
+		for (int c = 0; c < BOARD_SIZE; c ++) {
+			rv.push_back(board[r][c]);
+		}
+		initialBoard.push_back(rv);
+	}
+ 	currentTilesPlaced = currentNumTiles;
 	startTime = time(0);
 	int alpha = NEG_INF;
 	int beta = INF;
@@ -38,7 +47,7 @@ vector<int> MiniMax_MaxDepth::hMiniMax(vector<vector<int> >& board, int depth, i
 				res = {visistedValue};
 			} else {
 				res = hMiniMax(board, newDepth, alpha, beta, row, col);
-				visitedHash.addVisited(board, res[0]);
+				visitedHash.addVisited(board, initialBoard, res[0]);
 			}
 			board[row][col] = 0;
 			if (res[0] > v[0]) {v = {res[0], row, col};}
@@ -63,7 +72,7 @@ vector<int> MiniMax_MaxDepth::hMiniMax(vector<vector<int> >& board, int depth, i
 				res = {visistedValue};
 			} else {
 				res = hMiniMax(board, newDepth, alpha, beta, row, col);
-				visitedHash.addVisited(board, res[0]);
+				visitedHash.addVisited(board, initialBoard, res[0]);
 			}
 			board[row][col] = 0;
 			if (res[0] < v[0]) v = {res[0], row, col};

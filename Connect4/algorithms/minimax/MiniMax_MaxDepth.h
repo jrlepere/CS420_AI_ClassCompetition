@@ -21,6 +21,7 @@ private:
 	vector<int> hMiniMax(vector<vector<int> >& board, int depth, int alpha, int beta, int previousRow, int previousCol);
 	int maxDepth;
 	int count;
+	vector<vector<int> > initialBoard;
 };
 
 #endif /* MINIMAX_MAXDEPTH_H_ */

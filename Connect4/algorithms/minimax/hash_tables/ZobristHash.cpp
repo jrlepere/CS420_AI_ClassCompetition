@@ -1,32 +1,29 @@
-#include "ZobristHash.H"
+#include "ZobristHash.h"
 
 ZobristHash::ZobristHash() {
 	// Initialize the board once
-	int numberOfPieces = 2; // 2 pieces, 1 and -1
-	srand(time(NULL)); //randomize seed
+	srand(time(0)); //randomize seed
 	
 	for (int i = 0; i < BOARD_SIZE; i++) {	
-		vector< vector <int> > temp;
+		vector<vector<int> > temp;
 		for (int j = 0; j < BOARD_SIZE; j++) {
-			vector<int> tempPiece;			
-			// 0th index is 1
-			// 1st index is -1
-			for (int piece = 0; piece < numberOfPieces; piece++) {
-				tempPiece.push_back(rand());
-			}
-
-			temp.push_back(tempPiece);
+			int v1 = rand();
+			int v2 = rand();
+			std::cout << v1 << "   " << v2 << "\n";
+			temp.push_back({v1, v2});
 		}
-		initValues.push_back(temp);	
+		initValues.push_back(temp);
+		temp.clear();
 	}
+
 }
 
-int ZobristHash::getHashValue(vector< vector<int> > &board) {
+int ZobristHash::getHashValue(vector<vector<int> >& board) {
 	int hashValue = 0;
 	
 	// For hash, 0 index = 1, 1st index = -1
-	for (int i = 0; i < board.size(); i++) {
-		for (int j = 0; j < board[i].size(); j++) {
+	for (int i = 0; i < BOARD_SIZE; i++) {
+		for (int j = 0; j < BOARD_SIZE; j++) {
 			// Hash for Player Max (1)
 			if (board[i][j] == MAX) {
 				hashValue ^= initValues[i][j][0];

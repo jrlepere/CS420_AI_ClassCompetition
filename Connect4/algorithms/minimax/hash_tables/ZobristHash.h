@@ -1,8 +1,6 @@
 #ifndef ZOBRISTHASH_H_
 #define ZOBRISTHASH_H_
 
-using namespace std;
-
 #include <string>
 #include <vector>
 #include <iostream>
@@ -13,9 +11,10 @@ using namespace std;
 class ZobristHash {
 public:
 	ZobristHash();
-	int getHashValue(vector< vector<int> > &board);
+	~ZobristHash(){};
+	int getHashValue(vector<vector<int> >& board);
 private:
-	vector< vector <vector<int> > > initValues;
+	vector<vector<vector<int> > > initValues;
 };
 
 #endif /* ZOBRISTHASH_H_ */

@@ -4,7 +4,8 @@ algorithms/minimax/MiniMax_DFS.o: ../algorithms/minimax/MiniMax_DFS.cpp \
   ../algorithms/minimax/successor_functions/SuccessorFunction.h \
   ../algorithms/minimax/successor_functions/../../../src/Utilities.h \
   ../algorithms/minimax/heuristic_functions/HeuristicFunction.h \
-  ../algorithms/minimax/hash_tables/VisitedHashTable.h
+  ../algorithms/minimax/hash_tables/VisitedHashTable.h \
+  ../algorithms/minimax/hash_tables/ZobristHash.h
 
 ../algorithms/minimax/MiniMax_DFS.h:
 
@@ -19,3 +20,5 @@ algorithms/minimax/MiniMax_DFS.o: ../algorithms/minimax/MiniMax_DFS.cpp \
 ../algorithms/minimax/heuristic_functions/HeuristicFunction.h:
 
 ../algorithms/minimax/hash_tables/VisitedHashTable.h:
+
+../algorithms/minimax/hash_tables/ZobristHash.h:

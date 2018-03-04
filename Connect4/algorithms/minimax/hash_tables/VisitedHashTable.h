@@ -12,34 +12,29 @@
 #include <string>
 #include <unordered_map>
 #include "../../../src/Utilities.h"
+#include "ZobristHash.h"
 
 using namespace std;
 
 class VisitedHashTable {
 public:
-	VisitedHashTable(){
+	VisitedHashTable() {
 		map.reserve(100000);
 	};
 	~VisitedHashTable(){
 		map.clear();
 	};
-	void addVisited(vector<vector<int> >& board, int eval);
+	void addVisited(vector<vector<int> >& board, vector<vector<int> >& initialBoard, int eval);
 	int getValue(vector<vector<int> >& board);
 	static const int NOT_VISITED_VALUE = 15353263;
 private:
 	int getHash1(vector<vector<int> >& board);
-	int getHash2(vector<vector<int> >& board);
-	void addHash2(vector<vector<int> >& board, int eval);
-	int getHash3(vector<vector<int> >& board);
-	int getHash4(vector<vector<int> >& board);
-	int getHash5(vector<vector<int> >& board);
-	int getHash6(vector<vector<int> >& board);
-	int getHash7(vector<vector<int> >& board);
-	int getHash8(vector<vector<int> >& board);
+	void addHash2(vector<vector<int> >& board, vector<vector<int> >& initialBoard, int eval);
+	void addHash3(vector<vector<int> >& board, vector<vector<int> >& initialBoard, int eval);
+	void addHash4(vector<vector<int> >& board, vector<vector<int> >& initialBoard, int eval);
 	unordered_map<int, int> map;
 	hash<string> hash;
+	//ZobristHash hash;
 };
-
-
 
 #endif /* VISITEDHASHTABLE_H_ */
