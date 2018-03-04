@@ -1,8 +1,6 @@
 #ifndef ZOBRISTHASH_H_
 #define ZOBRISTHASH_H_
 
-using namespace std;
-
 #include <string>
 #include <vector>
 #include <iostream>

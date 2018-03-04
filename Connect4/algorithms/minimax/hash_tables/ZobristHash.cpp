@@ -1,4 +1,4 @@
-#include "ZobristHash.H"
+#include "ZobristHash.h"
 
 ZobristHash::ZobristHash() {
 	// Initialize the board once
