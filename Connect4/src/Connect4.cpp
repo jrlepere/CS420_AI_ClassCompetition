@@ -46,7 +46,6 @@ int main() {
 
 	JakesHeuristic2 h2(100);
 	Bloom sf2;
-	//MiniMax_MaxDepth a2(maxTime, 4, sf2, h2);
 	MiniMax_EIDS a2(maxTime, sf2, h2);
 	Player p2(a2);
 
