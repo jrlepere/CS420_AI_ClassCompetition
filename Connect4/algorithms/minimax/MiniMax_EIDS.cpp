@@ -30,6 +30,7 @@ vector<int> MiniMax_EIDS::getMove(vector<vector<int> >& board, int previousRow, 
 		vector<int> move = hMiniMax(board, depth, alpha, beta, previousRow, previousCol);
 		cout<<"ply: "<<maxDepth<<" in "<<difftime(time(0), startTime)<<"s - "<<count<<"\n";
 		if (difftime(time(0), startTime) > maxTime) return {bestMove[0], bestMove[1]};
+		if (maxDepth == 6) return {bestMove[0], bestMove[1]};
 		bestMove = {move[1],move[2]};
 		maxDepth ++;
 	}

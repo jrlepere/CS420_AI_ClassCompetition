@@ -31,13 +31,8 @@ public:
 	int getValue(vector<vector<int> >& board);
 	static const int NOT_VISITED_VALUE = 15353263;
 private:
-	int getHash1(vector<vector<int> >& board);
-	void addHash2(vector<vector<int> >& board, vector<vector<int> >& initialBoard, int eval);
-	void addHash3(vector<vector<int> >& board, vector<vector<int> >& initialBoard, int eval);
-	void addHash4(vector<vector<int> >& board, vector<vector<int> >& initialBoard, int eval);
 	unordered_map<int, int> map;
-	hash<string> hash;
-	//ZobristHash hash;
+	ZobristHash hash;
 };
 
 #endif /* VISITEDHASHTABLE_H_ */
