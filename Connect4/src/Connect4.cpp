@@ -78,18 +78,18 @@ bool whoGoesFirst() {
 	bool correctInput = false;;
 	string input;
 	do {
-		cout << "Who goes first, player or opponent? ";
+		cout << "Who goes first, [p]layer or [o]pponent? ";
 		cin >> input;
 
 		// Transform input into all lowercase
 		std::transform(input.begin(), input.end(), input.begin(), ::tolower);
 
-		if (input.compare("player") != 0 && input.compare("opponent") != 0) {
-			cout << "Incorrect player.\n\n";
+		if (input.compare("p") != 0 && input.compare("o") != 0) {
+			cout << "Incorrect player.\nEnter p for player or o for opponent.\n";
 		}
 		else {correctInput = true;}
 	} while (!correctInput);
 
-	if (input.compare("player") == 0) {return false;}
+	if (input.compare("p") == 0) {return false;}
 	else {return true;}
 }

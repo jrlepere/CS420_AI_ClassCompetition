@@ -37,7 +37,7 @@ vector<int> MiniMax_EIDS::getMove(vector<vector<int> >& board, int previousRow, 
 }
 
 vector<int> MiniMax_EIDS::hMiniMax(vector<vector<int> >& board, int depth, int alpha, int beta, int previousRow, int previousCol) {
-	count ++;
+	//count ++;
 	if (cutoffTest(board, depth, maxDepth)) return {heuristicFunction.execute(board, depth)};
 	vector<vector<int> > successors = successorFunction.execute(board, previousRow, previousCol);
 	if (depth % 2 == 0) {
